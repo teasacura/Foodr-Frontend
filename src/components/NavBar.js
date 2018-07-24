@@ -20,26 +20,53 @@ class NavBar extends Component {
 
   render(){
     return (
-      <div id="nav">
+      <div>
         {this.props.loggedIn ? (
-          <div>
-            <div className="nav-link" onClick={this.handleLogout}>
+          <div className="ui pointing menu">
+            <a className="item" onClick={this.handleLogout}>
               Log Out
-            </div>
-            <div>
+            </a>
+            <a className="item">
               Profile
-            </div>
+            </a>
+            <a className="active item">
+              Foodr Search
+            </a>
           </div>
         ) : (
-          <div className="nav-link">
-            Foodr
+          <div className="ui pointing menu">
+            <a className="active item">
+              Log In
+            </a>
           </div>
         )}
-
       </div>
     )
   }
 }
+
+//   render(){
+//     return (
+//       <div id="nav">
+//         {this.props.loggedIn ? (
+//           <div>
+//             <div className="nav-link" onClick={this.handleLogout}>
+//               Log Out
+//             </div>
+//             <div className="nav-link">
+//               Profile
+//             </div>
+//           </div>
+//         ) : (
+//           null
+//         )}
+//         <div className="nav-link">
+//           Foodr Search
+//         </div>
+//       </div>
+//     )
+//   }
+// }
 
 
 function mapStateToProps(state) {
