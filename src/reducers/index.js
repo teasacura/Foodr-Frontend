@@ -11,7 +11,6 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
       return {
         ...state,
         restaurants: action.payload,
-        // selectedRestaurant: action.payload[0],
         loading: false
       };
     case "SELECT_RESTAURANT":

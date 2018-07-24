@@ -16,12 +16,14 @@ const {
 } = require("react-google-maps");
 
 
-// function getLongituteLatitude(position) {
-//   return position
-// }
-//
-// const position = navigator.geolocation.getCurrentPosition(getLongituteLatitude)
+function getLongituteLatitude(position) {
+  return position
+}
+
+const position = navigator.geolocation.getCurrentPosition(getLongituteLatitude)
 // const { latitude, longitude } = position.coords
+
+console.log(position)
 
 const MapWithAMarkedInfoWindow = compose(
   withStateHandlers(() => ({
@@ -35,13 +37,15 @@ const MapWithAMarkedInfoWindow = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={8}
+    defaultZoom={13}
     // defaultCenter={{ lat: latitude, lng: longitude }}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: 40.7007397, lng:
+-73.9878059 }}
   >
     <Marker
       // position={{ lat: latitude, lng: longitude }}
-      position={{ lat: -34.397, lng: 150.644 }}
+      position={{ lat: 40.7007397, lng:
+-73.9878059 }}
       onClick={props.onToggleOpen}
     >
       {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
@@ -65,15 +69,16 @@ class RestaurantsContainer extends React.Component {
           <RestaurantList restaurants={this.props.restaurants}/>
         </div>
           <div className="ten wide column">
+              <MapWithAMarkedInfoWindow
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
           {this.props.restaurants.selectedRestaurant !== null ? (
             <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} />
           ) : (
-            <MapWithAMarkedInfoWindow
-              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
-              loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `400px` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
-            />
+            null
           )}
         </div>
       </div>
