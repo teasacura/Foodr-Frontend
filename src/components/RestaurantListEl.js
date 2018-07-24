@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 const RestaurantListEl = (props) => {
     const { restaurant } = props
     return (
-      <div onClick={() => {props.selectRestaurant(restaurant)}}>
-        <p>{restaurant.name}</p>
+      <div className="ui segment" onClick={() => {props.selectRestaurant(restaurant)}}>
+        <h3>{restaurant.name}</h3>
       </div>
     );
 }

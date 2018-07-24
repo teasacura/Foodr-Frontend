@@ -22,8 +22,13 @@ class NavBar extends Component {
     return (
       <div id="nav">
         {this.props.loggedIn ? (
-          <div className="nav-link" onClick={this.handleLogout}>
-            log out
+          <div>
+            <div className="nav-link" onClick={this.handleLogout}>
+              Log Out
+            </div>
+            <div>
+              Profile
+            </div>
           </div>
         ) : (
           <div className="nav-link">
