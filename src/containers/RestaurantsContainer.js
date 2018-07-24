@@ -4,7 +4,7 @@ import RestaurantList from "./RestaurantList";
 import RestaurantShow from "../components/RestaurantShow";
 // import MapWithAMarkedInfoWindow from "../components/MapWithAMarkedInfoWindow";
 // import EditHobbit from "./EditHobbit";
-import { fetchInitialRestaurants } from "../actions";
+import { fetchInitialRestaurants, postFavoriteRestaurant } from "../actions";
 import { connect } from "react-redux";
 const { compose, withProps, withStateHandlers } = require("recompose");
 const {
@@ -60,6 +60,10 @@ class RestaurantsContainer extends React.Component {
     this.props.fetchInitialRestaurants()
   }
 
+  handleClick = (id) => {
+    this.props.postFavoriteRestaurant(id)
+  }
+
   render() {
     // console.log(this.props)
     // console.log(this.props.restaurants.selectedRestaurant);
@@ -76,7 +80,7 @@ class RestaurantsContainer extends React.Component {
                 mapElement={<div style={{ height: `100%` }} />}
               />
           {this.props.restaurants.selectedRestaurant !== null ? (
-            <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} />
+            <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} addFavorite={this.handleClick}/>
           ) : (
             null
           )}
@@ -93,4 +97,4 @@ const mapStateToProps = state => ({
   // state.restaurants.find(r => r.id === state.selectedRestaurant)
 });
 
-export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);
+export default connect(mapStateToProps, { fetchInitialRestaurants, postFavoriteRestaurant })(RestaurantsContainer);

@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import { Link, Redirect } from 'react-router-dom'
 
 class Profile extends Component {
 
   render() {
+    console.log(this.props.currentUser);
     return (
       <div>
         {this.props.currentUser ? (
           <div>
             <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
-            <p>Here we'll have favorite restaurants, etc.</p>
+            <ul>{this.props.currentUser.favorites !== undefined ? (
+              this.props.currentUser.favorites.map(rest => <li key={rest.id}>{rest.name}</li> )
+            ) : (null)}
+            </ul>
           </div>
         ) : (
           <p>Loading</p>
@@ -23,7 +26,7 @@ class Profile extends Component {
 
 
 const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser
+  currentUser: state.user.currentUser
 });
 
 // export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);

@@ -15,6 +15,25 @@ export function fetchInitialRestaurants() {
   };
 }
 
+// export function fetchCurrentUser(id) {
+//   return dispatch => {
+//     dispatch({ type: "USER_LOADING" });
+//     RestfulAdapter.showFetch("users", id).then(data => {
+//       dispatch({ type: "USER_LOAD", payload: data });
+//     });
+//   };
+// }
+
+export function postFavoriteRestaurant(id){
+  return dispatch => {
+    dispatch({ type: "RESTAURANTS_LOADING" });
+    const body = {business_id: id}
+    RestfulAdapter.createFetch("favorites", body).then(data => {
+      dispatch({ type: "FAVORITE_LOAD", payload: data})
+    });
+  }
+}
+
 export function selectRestaurant(restaurant) {
   return { type: "SELECT_RESTAURANT", payload: restaurant };
 }

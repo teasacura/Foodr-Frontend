@@ -9,7 +9,6 @@ class MainPage extends Component {
 
   componentDidMount(){
     const token = localStorage.getItem('token')
-    console.log(token);
     if (token && (token !== undefined && token !== null && token !== "undefined")) {
       const options =   {
         headers: {
@@ -34,8 +33,6 @@ class MainPage extends Component {
   }
 
   render() {
-    // const loggedIn = !!this.state.auth.currentUser.id
-    // loggedIn={loggedIn}
     return (
       <div id="home">
         { this.props.loggedIn ? (
@@ -57,7 +54,7 @@ class MainPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.auth.loggedIn
+    loggedIn: state.user.loggedIn
   }
 }
 
