@@ -1,0 +1,79 @@
+#home form button, #topic > div button, #score-card div button, #profile div button, #signup form button {
+  background: #4d94ff;
+  color: white;
+  border: none;
+  padding: .3rem .7rem;
+  margin: .5rem auto;
+  display: block;
+  transition: background 150ms; }
+  #home form button:hover, #topic > div button:hover, #score-card div button:hover, #profile div button:hover, #signup form button:hover {
+    background: #1D88E3; }
+  #home form button:active, #topic > div button:active, #score-card div button:active, #profile div button:active, #signup form button:active {
+    background: #6EB0E8; }
+
+#home form a {
+  width: 100%;
+  text-align: center;
+  display: block;
+  transition: color 150ms; }
+  #home form a:link {
+    color: #5CA6E5; }
+  #home form a:visited {
+    color: #5CA6E5; }
+  #home form a:hover {
+    color: #FFBA21; }
+  #home form a:active {
+    color: #FFEF33; }
+
+    #home form {
+      margin: 1.1rem auto;
+      display: block;
+      padding: 1rem;
+      max-width: 350px;
+      box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.2);
+      background: #fafafa;
+      font-size: 1.25rem; }
+      #home form div {
+        display: flex;
+        flex-wrap: wrap;
+        justfiy-content: center; }
+        #home form div label {
+          margin: .5rem auto 0;
+          float: left;
+          display: inline-block; }
+        #home form div input {
+          font-size: 1.25rem;
+          margin: .5rem;
+          float: right; }
+      #home form button {
+        font-size: 1.25rem;
+        margin: 1rem auto; }
+      #home form a {
+        font-size: 1rem; }
+
+  #nav {
+    background: #111;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1rem;
+    margin: 0; }
+    #nav .nav-link {
+      text-decoration: none;
+      width: 100px;
+      padding: 12px;
+      background: #111;
+      textDecoration: none;
+      color: white;
+      text-align: center;
+      width: auto;
+      transition: background 150ms; }
+      #nav .nav-link:visited {
+        background: #111; }
+      #nav .nav-link:hover {
+        background: #444; }
+      #nav .nav-link:active {
+        background: #555; }
+    #nav #site-name {
+      margin-right: auto; }
