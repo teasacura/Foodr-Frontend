@@ -47,7 +47,7 @@ class NavBar extends Component {
             <div className="right menu">
               <div className="item">
                 <div className="ui transparent icon input">
-                  <input type="text" placeholder="Search..."></input>
+                  <input type="text" placeholder="Search Nearby..."></input>
                   <i className="search link icon"></i>
                 </div>
               </div>

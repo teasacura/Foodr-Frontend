@@ -17,7 +17,7 @@ const RestaurantShow = (props) => {
             <p>{do_delivery ? "Delivers Food" : "No Food Delivery"}</p>
           </div>
           <div className="column">
-            <p><a href={url}>Website</a></p>
+            <p><a href={url}>YelpSite</a></p>
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
           </div>
         </div>

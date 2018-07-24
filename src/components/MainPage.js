@@ -10,7 +10,7 @@ class MainPage extends Component {
   componentDidMount(){
     const token = localStorage.getItem('token')
     console.log(token);
-    if (token && (token !== undefined || token !== null || token !== "undefined")) {
+    if (token && (token !== undefined && token !== null && token !== "undefined")) {
       const options =   {
         headers: {
           'Content-Type': 'application/json',

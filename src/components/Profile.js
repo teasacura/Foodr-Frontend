@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 // import { Link, Redirect } from 'react-router-dom'
 
 class Profile extends Component {
@@ -6,11 +7,24 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Your Profile!</h1>
+        {this.props.currentUser ? (
+          <div>
+            <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
+            <p>Here we'll have favorite restaurants, etc.</p>
+          </div>
+        ) : (
+          <p>Loading</p>
+        )
+      }
       </div>
     );
   }
 }
 
 
-export default Profile;
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+});
+
+// export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);
+export default connect(mapStateToProps)(Profile);
