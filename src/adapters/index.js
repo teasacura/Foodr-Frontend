@@ -2,10 +2,19 @@
 const baseUrl = `http://localhost:3000`;
 
 function headers() {
-  return {
-    "Content-Type": "application/json",
-    Accept: "application/json"
-  };
+  const token = localStorage.getItem('token')
+  if (token) {
+    return {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: token
+    };
+  } else {
+    return {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    };
+  }
 }
 
 export class RestfulAdapter {

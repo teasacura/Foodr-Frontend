@@ -20,8 +20,8 @@ class RestaurantShow extends React.Component {
         </div>
         <h1>{name}</h1>
         <div>
-          <Rating defaultRating={rating} maxRating={5} onRate={this.handleRate} />
-          {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
+          <Rating defaultRating={rating} maxRating={5} />
+          {/* <pre>{JSON.stringify(this.state, null, 2)} onRate={this.handleRate}</pre> */}
         </div>
         <h3>{address}</h3>
         <div className="ui four column doubling stackable grid container">
@@ -35,7 +35,7 @@ class RestaurantShow extends React.Component {
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
           </div>
           <div className="column">
-            <Button icon="star outline" onClick={() => console.log(id)}/>
+            <Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>
           </div>
         </div>
 

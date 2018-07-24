@@ -28,8 +28,14 @@ class MainPage extends Component {
   }
 
   handleLogin = (user) => {
-    this.props.logIn(user);
-    localStorage.setItem('token', user.jwt);
+    const token = localStorage.getItem('token')
+    console.log(token);
+    if (!!token) {
+      null
+    } else {
+      localStorage.setItem('token', user.jwt)
+    }
+    this.props.logIn(user)
   }
 
   render() {
