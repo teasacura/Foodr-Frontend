@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { logOut } from "../actions";
 
 // const link = {
@@ -22,27 +22,39 @@ class NavBar extends Component {
     return (
       <div>
         {this.props.loggedIn ? (
-          <div className="ui pointing menu">
+          <div className="ui top attached tabular menu">
             <a className="item" onClick={this.handleLogout}>
               Log Out
             </a>
-            <a className="item">
+            <NavLink
+              to="/profile"
+              exact
+              className="item"
+              id="site-name"
+            >Profile</NavLink>
+            {/* <a className="item">
               Profile
-            </a>
-            <a className="active item">
+            </a> */}
+            <NavLink
+              to="/"
+              exact
+              className="active item"
+              id="site-name"
+            >Foodr Search</NavLink>
+            {/* <a className="active item">
               Foodr Search
-            </a>
-            <div class="right menu">
-              <div class="item">
-                <div class="ui transparent icon input">
+            </a> */}
+            <div className="right menu">
+              <div className="item">
+                <div className="ui transparent icon input">
                   <input type="text" placeholder="Search..."></input>
-                  <i class="search link icon"></i>
+                  <i className="search link icon"></i>
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="ui pointing menu">
+          <div className="ui top attached tabular menu">
             <a className="active item">
               Log In
             </a>
