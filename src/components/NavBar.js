@@ -32,6 +32,14 @@ class NavBar extends Component {
             <a className="active item">
               Foodr Search
             </a>
+            <div class="right menu">
+              <div class="item">
+                <div class="ui transparent icon input">
+                  <input type="text" placeholder="Search..."></input>
+                  <i class="search link icon"></i>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="ui pointing menu">
