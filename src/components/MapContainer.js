@@ -31,7 +31,7 @@ export class MapContainer extends React.Component {
     });
 
   render() {
-    console.log(this.props.restaurants);
+    // console.log(this.props.restaurants);
     return (
       <Map google={this.props.google}
           style={style}
@@ -39,12 +39,10 @@ export class MapContainer extends React.Component {
             lat: 40.7007739,
             lng: -73.9877738
           }}
-          zoom={15}
+          zoom={12}
           onClick={this.onMapClicked}>
 
           {this.props.restaurants ? (this.props.restaurants.map(rest => {
-            // const lat = rest.latitude
-            // const lng = rest.longitude
           return <Marker key={rest.id}
               onClick={this.onMarkerClick}
               name={rest.name}
@@ -52,8 +50,6 @@ export class MapContainer extends React.Component {
             />
           })
         ) : (null)}
-         {/* <Marker onClick={this.onMarkerClick}
-                name={'Current location'} /> */}
 
         <InfoWindow
           marker={this.state.activeMarker}
