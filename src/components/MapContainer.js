@@ -42,9 +42,18 @@ export class MapContainer extends React.Component {
           zoom={15}
           onClick={this.onMapClicked}>
 
-          {/* {this.props.restaurants} */}
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+          {this.props.restaurants ? (this.props.restaurants.map(rest => {
+            // const lat = rest.latitude
+            // const lng = rest.longitude
+          return <Marker key={rest.id}
+              onClick={this.onMarkerClick}
+              name={rest.name}
+              position={{lat: rest.latitude, lng: rest.longitude}}
+            />
+          })
+        ) : (null)}
+         {/* <Marker onClick={this.onMarkerClick}
+                name={'Current location'} /> */}
 
         <InfoWindow
           marker={this.state.activeMarker}

@@ -10,7 +10,7 @@ class RestaurantShow extends React.Component {
 
 
     render(){
-    const { id, image_url, name, address, url, is_closed, reviews, rating, do_delivery } = this.props.selectedRestaurant
+    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
     return (
       <div className="ui container segment">
         <div className="column">
@@ -21,6 +21,7 @@ class RestaurantShow extends React.Component {
         <h1>{name}</h1>
         <div>
           <Rating defaultRating={rating} maxRating={5} />
+          <p>Price: {price}</p>
           {/* <pre>{JSON.stringify(this.state, null, 2)} onRate={this.handleRate}</pre> */}
         </div>
         <h3>{address}</h3>
@@ -36,6 +37,10 @@ class RestaurantShow extends React.Component {
           </div>
           <div className="column">
             <Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>
+            <p>{latitude}</p>
+          </div>
+          <div className="column">
+            <Button circular icon="close"/>
           </div>
         </div>
 
