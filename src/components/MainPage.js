@@ -29,7 +29,6 @@ class MainPage extends Component {
 
   handleLogin = (user) => {
     const token = localStorage.getItem('token')
-    console.log(token);
     if (!!token) {
       null
     } else {

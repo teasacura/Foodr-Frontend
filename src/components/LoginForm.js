@@ -34,7 +34,6 @@ class LoginForm extends Component {
   };
 
   render() {
-    // console.log('isLoggedIn?', this.props.loggedIn === true);
     const { fields } = this.state;
     return (
       <div>
