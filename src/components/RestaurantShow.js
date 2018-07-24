@@ -4,7 +4,7 @@ import React from "react";
 const RestaurantShow = (props) => {
     const { image_url, name, address, url, is_closed, reviews, rating, do_delivery } = props.selectedRestaurant
     return (
-      <div>
+      <div className="ui container segment">
         <div className="ui small centered image">
           <img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
         </div>
