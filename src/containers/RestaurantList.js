@@ -35,9 +35,9 @@ class RestaurantList extends React.Component {
                     {this.props.restaurants.restaurants.map(rest =>
                         {
                         return (
-                                <List.Item>
+                                <List.Item key={rest.id}>
                                   <List.Content>
-                                    <RestaurantListEl key={rest.id} restaurant={rest} />
+                                    <RestaurantListEl restaurant={rest} />
                                   </List.Content>
                                 </List.Item>
                               );

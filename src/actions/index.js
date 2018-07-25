@@ -67,3 +67,39 @@ export function logIn(user) {
 export function logOut() {
   return { type: "LOG_OUT" };
 }
+
+export const getLocation = () => {
+
+    const defaultLocation = {
+            coords: {
+              latitude: 40.7007739,
+              longitude: -73.9877738
+            }
+        };
+
+    const geolocation = navigator.geolocation;
+
+    const location = new Promise((resolve, reject) => {
+        if (!geolocation) {
+            reject(new Error('Not Supported'));
+        }
+
+    geolocation.getCurrentPosition((position) => {
+        resolve(position);
+    }, () => {
+        reject (new Error('Permission denied'));
+    });
+  });
+
+  if (!location) {
+    return dispatch => dispatch({type: "GET_LOCATION",
+    payload: defaultLocation})
+  } else {
+      return dispatch => dispatch({
+        type: "GET_LOCATION",
+        payload: location
+      })
+    }
+  }
+
+};

@@ -2,6 +2,7 @@ import React from 'react';
 import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
+import { getLocation } from "../actions";
 // import Marker from './Marker'
 
 
@@ -18,6 +19,10 @@ export class MainMapContainer extends React.Component {
     selectedPlace: {},
   };
 
+  componentDidMount() {
+    this.props.getLocation();
+  }
+
   mapClicked = (mapProps, map, clickEvent) => {
       console.log(mapProps)
       console.log(clickEvent)
@@ -31,42 +36,50 @@ export class MainMapContainer extends React.Component {
     });
 
   render() {
+    const location = this.props.location
     // console.log(this.props.restaurants);
     return (
-      <Map google={this.props.google}
-          style={style}
-          initialCenter={{
-            lat: 40.7007739,
-            lng: -73.9877738
-          }}
-          zoom={12}
-          onClick={this.onMapClicked}>
+      <div>
+        {!location ? (<div>Loading...</div>
+        ) : (
+          <Map google={this.props.google}
+            style={style}
+            initialCenter={{
+              lat: 40.7007739,
+              lng: -73.9877738
+            }}
+            zoom={12}
+            onClick={this.onMapClicked}>
 
-          {this.props.restaurants ? (this.props.restaurants.map(rest => {
-          return <Marker key={rest.id}
-              onClick={this.onMarkerClick}
-              name={rest.name}
-              position={{lat: rest.latitude, lng: rest.longitude}}
-            />
-          })
-        ) : (null)}
+            {this.props.restaurants ? (this.props.restaurants.map(rest => {
+              return <Marker key={rest.id}
+                onClick={this.onMarkerClick}
+                name={rest.name}
+                position={{lat: rest.latitude, lng: rest.longitude}}
+              />
+            })
+          ) : (null)}
 
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
             <div>
               <h1>{this.state.selectedPlace.name}</h1>
             </div>
-        </InfoWindow>
-      </Map>
+          </InfoWindow>
+        </Map>
+      )
+    }
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
   restaurants: state.restaurants.restaurants,
+  user: state.currentLocation
 });
 
-export default connect(mapStateToProps)(GoogleApiWrapper({
+export default connect(mapStateToProps, { getLocation })(GoogleApiWrapper({
   apiKey: apiKey
 })(MainMapContainer))
