@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom'
-import { logOut } from "../actions";
+import { logOut, postSearch } from "../actions";
 
 // const link = {
 //   width: '100px',
@@ -14,11 +14,25 @@ import { logOut } from "../actions";
 
 class NavBar extends Component {
 
+  state = {
+    term: ""
+  }
+
   handleLogout = () => {
     this.props.logOut();
     localStorage.clear();
     this.props.history.push("/")
   }
+
+  handleChange = (e) => {
+    this.setState({ term: e.target.value})
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.postSearch(this.state.term)
+  }
+
 
   render(){
     // console.log(this.props);
@@ -44,8 +58,8 @@ class NavBar extends Component {
             <div className="right menu">
               <div className="item">
                 <div className="ui transparent icon input">
-                  <input type="text" placeholder="Search Nearby..."></input>
-                  <i className="search link icon"></i>
+                  <input type="text" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
+                  <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
             </div>
@@ -92,4 +106,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { logOut })(NavBar));
+export default withRouter(connect(mapStateToProps, { logOut, postSearch })(NavBar));
