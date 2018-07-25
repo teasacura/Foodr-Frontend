@@ -51,7 +51,7 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
   }
 }
 
-const userReducer = (state={loggedIn: false, currentUser: null, loading: false, currentLocation: {}}, action) => {
+const userReducer = (state={loggedIn: false, currentUser: null, loading: false, location: {}}, action) => {
   switch (action.type) {
     case "LOG_IN":
       return {
@@ -77,6 +77,7 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         loading: false
       };
     case "GET_LOCATION": {
+        console.log(action.payload.coords);
           return {
               ...state,
               location: {

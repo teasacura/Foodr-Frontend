@@ -69,6 +69,7 @@ export function logOut() {
 }
 
 export const getLocation = () => {
+    let action = {};
 
     const defaultLocation = {
             coords: {
@@ -79,27 +80,31 @@ export const getLocation = () => {
 
     const geolocation = navigator.geolocation;
 
-    const location = new Promise((resolve, reject) => {
-        if (!geolocation) {
-            reject(new Error('Not Supported'));
-        }
+    const location = geolocation.getCurrentPosition(position => position)
 
-    geolocation.getCurrentPosition((position) => {
-        resolve(position);
-    }, () => {
-        reject (new Error('Permission denied'));
-    });
-  });
+  //   const location = new Promise((resolve, reject) => {
+  //       if (!geolocation) {
+  //           reject(new Error('Not Supported'));
+  //       }
+  //
+  //   geolocation.getCurrentPosition((position) => {
+  //       resolve(position);
+  //   }, () => {
+  //       reject (new Error('Permission denied'));
+  //   });
+  // });
 
   if (!location) {
-    return dispatch => dispatch({type: "GET_LOCATION",
-    payload: defaultLocation})
+    action = {
+        type: "GET_LOCATION",
+        payload: defaultLocation
+    }
   } else {
-      return dispatch => dispatch({
+    action = {
         type: "GET_LOCATION",
         payload: location
-      })
+      }
     }
-  }
 
-};
+    return dispatch => {dispatch(action)};
+  }

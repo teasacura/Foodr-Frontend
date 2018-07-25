@@ -2,7 +2,6 @@ import React from 'react';
 import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
-// import Marker from './Marker'
 
 
 const style = {
@@ -31,7 +30,7 @@ export class ProfileMapContainer extends React.Component {
     });
 
   render() {
-    // console.log(this.props.restaurants);
+    //need to add current location capability
     return (
       <Map google={this.props.google}
           style={style}
