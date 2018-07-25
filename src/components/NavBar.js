@@ -30,7 +30,9 @@ class NavBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    const input = document.querySelector("#search")
     this.props.postSearch(this.state.term)
+    input.value = ""
   }
 
 
@@ -58,7 +60,7 @@ class NavBar extends Component {
             <div className="right menu">
               <div className="item">
                 <div className="ui transparent icon input">
-                  <input id="search" type="text" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
+                  <input id="search" type="search" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
                   <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
