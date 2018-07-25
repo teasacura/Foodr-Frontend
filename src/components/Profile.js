@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import ProfileMapContainer from './ProfileMapContainer'
 
 class Profile extends Component {
 
@@ -13,6 +14,7 @@ class Profile extends Component {
               this.props.currentUser.favorites.map(rest => <li key={rest.id}>{rest.name}</li> )
             ) : (null)}
             </ul>
+            <ProfileMapContainer />
           </div>
         ) : (
           <p>Loading</p>

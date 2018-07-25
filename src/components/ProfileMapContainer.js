@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 
 const style = {
   width: '100%',
-  height: '100%'
+  height: '80%'
 }
 
-export class MainMapContainer extends React.Component {
+export class ProfileMapContainer extends React.Component {
 
   state = {
     showingInfoWindow: false,
@@ -39,10 +39,10 @@ export class MainMapContainer extends React.Component {
             lat: 40.7007739,
             lng: -73.9877738
           }}
-          zoom={12}
+          zoom={11}
           onClick={this.onMapClicked}>
 
-          {this.props.restaurants ? (this.props.restaurants.map(rest => {
+          {this.props.favorites ? (this.props.favorites.map(rest => {
           return <Marker key={rest.id}
               onClick={this.onMarkerClick}
               name={rest.name}
@@ -64,9 +64,9 @@ export class MainMapContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  restaurants: state.restaurants.restaurants,
+  favorites: state.user.currentUser.favorites,
 });
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: apiKey
-})(MainMapContainer))
+})(ProfileMapContainer))
