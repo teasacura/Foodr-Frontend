@@ -18,6 +18,10 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
         ...state,
         selectedRestaurant: action.payload
       };
+    case "CLEAR_RESTAURANT":
+      return {
+        ...state,
+        selectedRestaurant: null}
 
     // case "ADD_TO_FAVORITES":
     //   return {

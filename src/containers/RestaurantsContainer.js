@@ -13,9 +13,13 @@ class RestaurantsContainer extends React.Component {
     this.props.fetchInitialRestaurants()
   }
 
-  handleClick = (id) => {
+  handleFavoriteClick = (id) => {
     this.props.postFavoriteRestaurant(id)
   }
+
+  // handleClick = (e) => {
+  //   console.log(e.target);
+  // }
 
   render() {
     // console.log(this.props)
@@ -28,7 +32,7 @@ class RestaurantsContainer extends React.Component {
           <div className="ten wide column">
               <MapContainer />
           {this.props.restaurants.selectedRestaurant !== null ? (
-            <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} addFavorite={this.handleClick}/>
+            <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} addFavorite={this.handleFavoriteClick}/>
           ) : (
             null
           )}

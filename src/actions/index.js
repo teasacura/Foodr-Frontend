@@ -38,6 +38,10 @@ export function selectRestaurant(restaurant) {
   return { type: "SELECT_RESTAURANT", payload: restaurant };
 }
 
+export function clearRestaurant() {
+  return { type: "CLEAR_RESTAURANT" }
+}
+
 // export function updateHobbit({ id, name, title, key_skill }) {
 //   return dispatch => {
 //     RestfulAdapter.editFetch("hobbits", id, {

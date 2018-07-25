@@ -1,5 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Rating, Button } from 'semantic-ui-react'
+
+import { clearRestaurant } from "../actions";
 
 
 class RestaurantShow extends React.Component {
@@ -10,7 +13,7 @@ class RestaurantShow extends React.Component {
 
 
     render(){
-    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
+    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery } = this.props.selectedRestaurant
     return (
       <div className="ui container segment">
         <div className="column">
@@ -37,10 +40,10 @@ class RestaurantShow extends React.Component {
           </div>
           <div className="column">
             <Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>
-            <p>{latitude}</p>
           </div>
           <div className="column">
-            <Button circular icon="close"/>
+            <Button circular icon="close" onClick={() => this.props.clearRestaurant()}/>
+            {/* here need to fix the button and make event to close "view restaurant" */}
           </div>
         </div>
 
@@ -49,4 +52,5 @@ class RestaurantShow extends React.Component {
   }
 }
 
-export default RestaurantShow;
+
+export default connect(null, { clearRestaurant })(RestaurantShow);
