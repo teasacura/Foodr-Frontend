@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
-    this.props.postSearch("food")
+    this.props.fetchInitialRestaurants()
   }
 
   handleFavoriteClick = (id) => {
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
   // state.restaurants.find(r => r.id === state.selectedRestaurant)
 });
 
-export default connect(mapStateToProps, { fetchInitialRestaurants, postFavoriteRestaurant, postSearch })(RestaurantsContainer);
+export default connect(mapStateToProps, { fetchInitialRestaurants, postFavoriteRestaurant })(RestaurantsContainer);

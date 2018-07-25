@@ -37,7 +37,7 @@ export class MainMapContainer extends React.Component {
 
   render() {
     // const {latitude, longitude} = this.props.location
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         {!this.props.location ? (<div>Loading...</div>
