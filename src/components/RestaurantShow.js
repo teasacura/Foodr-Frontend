@@ -4,6 +4,10 @@ import { Rating, Button } from 'semantic-ui-react'
 
 import { clearRestaurant } from "../actions";
 
+const style = {
+  'position': 'fixed'
+}
+
 
 class RestaurantShow extends React.Component {
   constructor(){
@@ -24,7 +28,7 @@ class RestaurantShow extends React.Component {
     render(){
     const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery } = this.props.selectedRestaurant
     return (
-      <div className="ui container segment">
+      <div className="ui container segment" style={style}>
         <div className="column">
           <div className="ui small centered image">
             <img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
