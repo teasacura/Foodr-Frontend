@@ -10,7 +10,7 @@ const style = {
   height: '100%'
 }
 
-export class MapContainer extends React.Component {
+export class MainMapContainer extends React.Component {
 
   state = {
     showingInfoWindow: false,
@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: apiKey
-})(MapContainer))
+})(MainMapContainer))

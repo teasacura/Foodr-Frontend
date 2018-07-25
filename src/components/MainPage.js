@@ -30,7 +30,7 @@ class MainPage extends Component {
   handleLogin = (user) => {
     const token = localStorage.getItem('token')
     if (!!token) {
-      console.log("no token")
+      console.log("token present")
     } else {
       localStorage.setItem('token', user.jwt)
     }

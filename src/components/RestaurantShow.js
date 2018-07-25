@@ -6,11 +6,20 @@ import { clearRestaurant } from "../actions";
 
 
 class RestaurantShow extends React.Component {
-    // state = {}
+  constructor(){
+    super()
+
+    this.state = {
+      active: false
+    }
+
+  }
     //
     // handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
 
-
+    // handleClick = () => {
+    //   this.setState({ active: !this.state.active}, )
+    // }
 
     render(){
     const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery } = this.props.selectedRestaurant
@@ -39,7 +48,7 @@ class RestaurantShow extends React.Component {
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
           </div>
           <div className="column">
-            <Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>
+            <Button inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button>
           </div>
           <div className="column">
             <Button circular icon="close" onClick={() => this.props.clearRestaurant()}/>

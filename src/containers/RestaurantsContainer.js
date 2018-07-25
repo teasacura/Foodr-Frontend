@@ -2,7 +2,7 @@ import React from "react";
 
 import RestaurantList from "./RestaurantList";
 import RestaurantShow from "../components/RestaurantShow";
-import MapContainer from "../components/MapContainer";
+import MainMapContainer from "../components/MainMapContainer";
 
 import { fetchInitialRestaurants, postFavoriteRestaurant } from "../actions";
 import { connect } from "react-redux";
@@ -30,7 +30,7 @@ class RestaurantsContainer extends React.Component {
           <RestaurantList restaurants={this.props.restaurants}/>
         </div>
           <div className="ten wide column">
-              <MapContainer />
+              <MainMapContainer />
           {this.props.restaurants.selectedRestaurant !== null ? (
             <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} addFavorite={this.handleFavoriteClick}/>
           ) : (
