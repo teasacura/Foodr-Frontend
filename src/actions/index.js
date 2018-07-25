@@ -9,7 +9,8 @@ export function fetchInitialRestaurants() {
   //the fetch request was extracted out to our adapter, but still functions the same
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-    RestfulAdapter.indexFetch("businesses").then(data => {
+    const body = {term: "Food"}
+    RestfulAdapter.createFetch("searches", body).then(data => {
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
     });
   };

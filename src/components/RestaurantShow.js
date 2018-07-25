@@ -44,7 +44,7 @@ class RestaurantShow extends React.Component {
         <div className="ui four column doubling stackable grid container">
           <div className="column">
             <p>Number of Reviews: {reviews}</p>
-            {/* <p>Rating: {rating} </p> */}
+            <p>Rating: {rating} </p>
             <p>{do_delivery ? "Delivers Food" : "No Food Delivery"}</p>
           </div>
           <div className="column">

@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
-    this.props.postSearch()
+    this.props.postSearch("food")
   }
 
   handleFavoriteClick = (id) => {
