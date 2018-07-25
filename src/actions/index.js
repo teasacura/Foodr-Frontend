@@ -26,7 +26,7 @@ export function fetchInitialRestaurants() {
 
 export function postFavoriteRestaurant(id){
   return dispatch => {
-    dispatch({ type: "RESTAURANTS_LOADING" });
+    dispatch({ type: "FAVORITE_LOADING" });
     const body = {business_id: id}
     RestfulAdapter.createFetch("favorites", body).then(data => {
       dispatch({ type: "FAVORITE_LOAD", payload: data})
