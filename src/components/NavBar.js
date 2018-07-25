@@ -58,7 +58,7 @@ class NavBar extends Component {
             <div className="right menu">
               <div className="item">
                 <div className="ui transparent icon input">
-                  <input type="text" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
+                  <input id="search" type="text" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
                   <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
