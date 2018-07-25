@@ -23,11 +23,6 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
         ...state,
         selectedRestaurant: null}
 
-    // case "ADD_TO_FAVORITES":
-    //   return {
-    //     ...state
-    //   }
-
 
     // case "UPDATE_FORM":
     //   return {
@@ -77,15 +72,28 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         loading: false
       };
     case "GET_LOCATION": {
-        console.log(action.payload.coords);
           return {
               ...state,
               location: {
                   latitude: action.payload.coords.latitude,
                   longitude: action.payload.coords.longitude,
-
               }
           }
+      }
+    case "FAVORITE_LOADING":
+      return {
+        ...state,
+        loading: true
+      }
+    case "FAVORITE_LOAD":
+    // const copyRestaurants = state.currentUser
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          favorites: action.payload
+        },
+        loading: false
       }
     default:
       return state;
