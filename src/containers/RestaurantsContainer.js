@@ -12,6 +12,7 @@ class RestaurantsContainer extends React.Component {
   componentDidMount() {
     this.props.getLocation();
     this.props.fetchInitialRestaurants()
+      // "Food", this.props.location.latitude, this.props.location.longitude)
   }
 
   handleFavoriteClick = (id) => {
@@ -23,17 +24,21 @@ class RestaurantsContainer extends React.Component {
   // }
 
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
         <div className="six wide column">
-          <RestaurantList restaurants={this.props.restaurants}/>
+          {this.props.restaurants !== null ? (
+            <RestaurantList restaurants={this.props.restaurants}/>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
           <div className="ten wide column">
               <MainMapContainer />
-          {this.props.restaurants.selectedRestaurant !== null ? (
-            <RestaurantShow selectedRestaurant={this.props.restaurants.selectedRestaurant} addFavorite={this.handleFavoriteClick}/>
+          {this.props.selectedRestaurant !== null ? (
+            <RestaurantShow selectedRestaurant={this.props.selectedRestaurant} addFavorite={this.handleFavoriteClick}/>
           ) : (
             null
           )}
@@ -45,8 +50,9 @@ class RestaurantsContainer extends React.Component {
 
 
 const mapStateToProps = state => ({
-  restaurants: state.restaurants,
-  selectedRestaurant: state.selectedRestaurant
+  restaurants: state.restaurants.restaurants,
+  selectedRestaurant: state.restaurants.selectedRestaurant,
+  location: state.user.location
   // state.restaurants.find(r => r.id === state.selectedRestaurant)
 });
 

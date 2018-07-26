@@ -9,7 +9,7 @@ export function fetchInitialRestaurants() {
   //the fetch request was extracted out to our adapter, but still functions the same
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-    const body = {term: "Food"}
+    const body = {term: "Food", latitude: 40.7007739, longitude: -73.9877738}
     RestfulAdapter.createFetch("searches", body).then(data => {
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
     });
@@ -35,10 +35,10 @@ export function postFavoriteRestaurant(id){
   }
 }
 
-export function postSearch(term){
+export function postSearch(term, latitude, longitude){
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-    const body = {term: term}
+    const body = {term: term, latitude: latitude, longitude: longitude }
     RestfulAdapter.createFetch("searches", body).then(data => {
       dispatch({ type: "RESTAURANTS_LOAD", payload: data})
     });
@@ -77,6 +77,13 @@ export function logIn(user) {
 
 export function logOut() {
   return { type: "LOG_OUT" };
+}
+
+export const newLocation = (location) => {
+  let action = {
+    coords: {location}
+  }
+  return { type: "NEW_LOCATION", payload: action }
 }
 
 export const getLocation = () => {
