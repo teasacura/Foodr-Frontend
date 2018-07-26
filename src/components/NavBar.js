@@ -31,7 +31,7 @@ class NavBar extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const input = document.querySelector("#search")
-    this.props.postSearch(this.state.term, this.props.location)
+    this.props.postSearch(this.state.term, this.props.location.latitude, this.props.location.longitude)
     input.value = ""
   }
 
