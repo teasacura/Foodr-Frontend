@@ -19,9 +19,9 @@ export class MainMapContainer extends React.Component {
     selectedPlace: {},
   };
 
-  componentDidMount() {
-    this.props.getLocation();
-  }
+  // componentDidMount() {
+  //   this.props.getLocation();
+  // }
 
   mapClicked = (mapProps, map, clickEvent) => {
       console.log(mapProps)
