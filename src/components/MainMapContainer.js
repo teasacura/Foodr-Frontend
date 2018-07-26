@@ -2,13 +2,18 @@ import React from 'react';
 import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
-import { getLocation } from "../actions";
+import { newLocation, postSearch } from "../actions";
 // import Marker from './Marker'
+// getLocation,
 
 
-const style = {
+const mapStyle = {
   width: '100%',
   height: '100%'
+}
+
+const markerStyle = {
+  color: '00ff00'
 }
 
 export class MainMapContainer extends React.Component {
@@ -23,9 +28,15 @@ export class MainMapContainer extends React.Component {
   //   this.props.getLocation();
   // }
 
-  mapClicked = (mapProps, map, clickEvent) => {
-      console.log(mapProps)
-      console.log(clickEvent)
+  onMapClick = (mapProps, map, clickEvent) => {
+    const newLatitude = clickEvent.latLng.lat();
+    const newLongitude = clickEvent.latLng.lng();
+    const selectedLocation = {
+      latitude: newLatitude,
+      longitude: newLongitude
+     }
+     this.props.newLocation(selectedLocation)
+     this.props.postSearch("Food", newLatitude, newLongitude)
     }
 
   onMarkerClick = (props, marker, e) =>
@@ -37,19 +48,24 @@ export class MainMapContainer extends React.Component {
 
   render() {
     // const {latitude, longitude} = this.props.location
-    // console.log(this.props);
+    console.log(this.props);
+    const icon = {
+      // https://loc8tor.co.uk/wp-content/uploads/2015/08/stencil.png
+            url: "http://www.portlandchronicle.com/wp-content/uploads/leaflet-maps-marker-icons/map-pin-blue-th.png", // url
+            scaledSize: new this.props.google.maps.Size(25, 40), // scaled size
+        };
     return (
       <div>
         {!this.props.location ? (<div>Loading...</div>
         ) : (
           <Map google={this.props.google}
-            style={style}
+            style={mapStyle}
             initialCenter={{
               lat: this.props.location.latitude,
               lng: this.props.location.longitude
             }}
-            zoom={12}
-            onClick={this.onMapClicked}>
+            zoom={14}
+            onClick={this.onMapClick}>
 
             {this.props.restaurants ? (this.props.restaurants.map(rest => {
               return <Marker key={rest.id}
@@ -59,6 +75,12 @@ export class MainMapContainer extends React.Component {
               />
             })
           ) : (null)}
+
+          <Marker
+            icon={icon}
+            name={'Current Location'}
+            position={{lat: this.props.location.latitude, lng: this.props.location.longitude}}
+          />
 
           <InfoWindow
             marker={this.state.activeMarker}
@@ -75,11 +97,11 @@ export class MainMapContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state =>({
   restaurants: state.restaurants.restaurants,
   location: state.user.location
-});
+})
 
-export default connect(mapStateToProps, { getLocation })(GoogleApiWrapper({
+export default connect(mapStateToProps, { newLocation, postSearch })(GoogleApiWrapper({
   apiKey: apiKey
 })(MainMapContainer))

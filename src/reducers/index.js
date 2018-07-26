@@ -80,6 +80,16 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
               }
           }
       }
+    case "NEW_LOCATION": {
+      console.log(action.payload);
+          return {
+              ...state,
+              location: {
+                  latitude: action.payload.coords.location.latitude,
+                  longitude: action.payload.coords.location.longitude,
+              }
+          }
+      }
     case "FAVORITE_LOADING":
       return {
         ...state,

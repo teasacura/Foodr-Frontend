@@ -31,7 +31,7 @@ class NavBar extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const input = document.querySelector("#search")
-    this.props.postSearch(this.state.term)
+    this.props.postSearch(this.state.term, this.props.location)
     input.value = ""
   }
 
@@ -104,7 +104,8 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.user.loggedIn
+    loggedIn: state.user.loggedIn,
+    location: state.user.location
   }
 }
 
