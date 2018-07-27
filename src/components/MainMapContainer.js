@@ -8,7 +8,7 @@ import { newLocation, postSearch } from "../actions";
 
 
 const mapStyle = {
-  width: '100%',
+  width: '95%',
   height: '100%'
 }
 
