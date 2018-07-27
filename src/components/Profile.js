@@ -1,32 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import ProfileMapContainer from './ProfileMapContainer'
-import { Icon, List } from 'semantic-ui-react'
+import { Icon, List, Button } from 'semantic-ui-react'
 
 class Profile extends Component {
 
-  render() {
-    // console.log(this.props.currentUser);
-    return (
-      <div>
-        {this.props.currentUser ? (
-          <div>
-            <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
-            <h6>Favorites</h6>
-            <ul>{this.props.currentUser.favorites !== undefined ? (
-              this.props.currentUser.favorites.map(rest => <li key={rest.id}>{rest.name}</li> )
-            ) : (null)}
-            </ul>
-            <ProfileMapContainer />
-          </div>
-        ) : (
-          <p>Loading</p>
-        )
-      }
-      </div>
-    );
-  }
+handleClick = (e) => {
+  console.log("I've been clicked!");
+}
 
+render() {
+  console.log(this.props.currentUser);
+  return (
+    <div>
+      {this.props.currentUser ? (
+        <div>
+          <div className="ui container">
+              <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
+              <div className="ui segment">
+                <h3>Favorites</h3>
+                <List divided verticalAlign='middle' size="huge">
+                  {this.props.currentUser.favorites !== undefined ? (
+                    this.props.currentUser.favorites.map(rest => (
+                      <List.Item key={rest.id}>
+                        {/* <List.Icon name='marker' /> */}
+                        <List.Content>
+                          <List.Header>{rest.name} <Button circular icon="close" onClick={this.handleClick}></Button></List.Header>
+                        </List.Content>
+                      </List.Item>
+                    )
+                  )) : (<p>Loading</p>)
+                }
+              </List>
+              </div>
+          </div>
+          <ProfileMapContainer />
+      </div>
+      ) : (<p>Loading</p>)
+          }
+    </div>
+  )
+  }
 }
 
 
@@ -37,7 +51,6 @@ const mapStateToProps = state => ({
 // export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);
 export default connect(mapStateToProps)(Profile);
 
-
 // class Profile extends Component {
 //
 // render() {
@@ -47,24 +60,54 @@ export default connect(mapStateToProps)(Profile);
 //       {this.props.currentUser ? (
 //         <div>
 //           <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
-//           <List>
-//             {this.props.currentUser.favorites !== undefined ? (this.props.currentUser.favorites.map(rest => (
-//                   <List.Item key={rest.id}>
-//                     <Icon name='right triangle'></Icon>
-//                     <List.Content>
-//                       <List.Header>{rest.name}</List.Header>
-//                     </List.Content>
-//                   </List.Item>
+//           <div>
+//             {this.props.currentUser.favorites !== undefined ? (
+//               this.props.currentUser.favorites.map(rest => (
+//                 <Button as='div' labelPosition='left'>
+//                   <Label as='a' basic>
+//                     {rest.name}
+//                   </Label>
+//                   <Button icon>
+//                     <Icon name='remove' />
+//                   </Button>
+//                 </Button>
 //                 )
-//               ))
+//               )) : (<p>Loading</p>)
 //             }
-//           </List>
+//           </div>
 //           <ProfileMapContainer />
-//         </div>
-//       ) : (
-//               <p>Loading</p>
-//             )
+//       </div>
+//       ) : (<p>Loading</p>)
 //           }
 //     </div>
 //   )
+//   }
+// }
+
+
+
+// class Profile extends Component {
+//
+//   render() {
+//     // console.log(this.props.currentUser);
+//     return (
+//       <div>
+//         {this.props.currentUser ? (
+//           <div>
+//             <h1>Welcome to Your Profile, {this.props.currentUser.email}!</h1>
+//             <h3>Favorites</h3>
+//             <ul>{this.props.currentUser.favorites !== undefined ? (
+//               this.props.currentUser.favorites.map(rest => <li key={rest.id}>{rest.name}</li> )
+//             ) : (null)}
+//             </ul>
+//             <ProfileMapContainer />
+//           </div>
+//         ) : (
+//           <p>Loading</p>
+//         )
+//       }
+//       </div>
+//     );
+//   }
+//
 // }

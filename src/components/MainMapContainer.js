@@ -12,10 +12,6 @@ const mapStyle = {
   height: '100%'
 }
 
-const markerStyle = {
-  color: '00ff00'
-}
-
 export class MainMapContainer extends React.Component {
 
   state = {
