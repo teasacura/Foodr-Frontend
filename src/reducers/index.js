@@ -81,7 +81,6 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
           }
       }
     case "NEW_LOCATION": {
-      console.log(action.payload);
           return {
               ...state,
               location: {
@@ -96,7 +95,6 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         loading: true
       }
     case "FAVORITE_LOAD":
-    // const copyRestaurants = state.currentUser
       return {
         ...state,
         currentUser: {

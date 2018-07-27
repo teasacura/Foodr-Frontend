@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import ProfileMapContainer from './ProfileMapContainer'
 import { Icon, List, Button } from 'semantic-ui-react'
+import { deleteFavoriteRestaurant } from "../actions";
 
 class Profile extends Component {
 
-handleClick = (e) => {
-  console.log("I've been clicked!");
-}
+// handleClick = (id) => {
+//   console.log(id);
+// }
 
 render() {
   console.log(this.props.currentUser);
@@ -25,7 +26,7 @@ render() {
                       <List.Item key={rest.id}>
                         {/* <List.Icon name='marker' /> */}
                         <List.Content>
-                          <List.Header>{rest.name} <Button circular icon="close" onClick={this.handleClick}></Button></List.Header>
+                          <List.Header>{rest.name} <Button circular icon="close" onClick={() => this.props.deleteFavoriteRestaurant(rest.favorite_id)}></Button></List.Header>
                         </List.Content>
                       </List.Item>
                     )
@@ -49,7 +50,7 @@ const mapStateToProps = state => ({
 });
 
 // export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, { deleteFavoriteRestaurant })(Profile);
 
 // class Profile extends Component {
 //
