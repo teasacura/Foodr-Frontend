@@ -38,6 +38,7 @@ export class MainMapContainer extends React.Component {
       longitude: newLongitude
      }
      this.props.newLocation(selectedLocation)
+     this.setState({showingInfoWindow: false})
      this.props.postSearch("Food", newLatitude, newLongitude)
     }
 
