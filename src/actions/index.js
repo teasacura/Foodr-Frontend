@@ -36,11 +36,12 @@ export function postFavoriteRestaurant(id){
 }
 
 export function deleteFavoriteRestaurant(id){
+  // console.log(id);
   return dispatch => {
     // dispatch({ type: "FAVORITE_LOADING" });
     // const body = {business_id: id}
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "DELETE_FAVORITE", payload: data})
+      dispatch({ type: "FAVORITE_LOAD", payload: data})
     });
   }
 }
