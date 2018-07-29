@@ -27,7 +27,8 @@ class RestaurantShow extends React.Component {
     // }
 
     render(){
-    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery } = this.props.selectedRestaurant
+      console.log(this.props);
+    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
     return (
       // <div className="ui two column centered grid" style={style}>
 
@@ -51,7 +52,9 @@ class RestaurantShow extends React.Component {
               {/* <pre>{JSON.stringify(this.state, null, 2)} onRate={this.handleRate}</pre> */}
             </div>
           {/* </div> */}
-          <h3>{address}</h3>
+          <h3><a
+            target="_blank"
+            href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.latitude}%2C${this.props.longitude}&destination=${latitude}%2C${longitude}`}>{address}</a></h3>
           {/* <div className="ui four column doubling stackable grid container"> */}
           {/* <div className="column"> */}
             <p>Number of Reviews: {reviews}</p>
@@ -70,5 +73,11 @@ class RestaurantShow extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  latitude: state.user.location.latitude,
+  longitude: state.user.location.longitude
+  // state.restaurants.find(r => r.id === state.selectedRestaurant)
+});
 
-export default connect(null, { clearRestaurant })(RestaurantShow);
+
+export default connect(mapStateToProps, { clearRestaurant })(RestaurantShow);
