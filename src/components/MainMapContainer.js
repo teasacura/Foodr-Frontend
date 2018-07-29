@@ -2,7 +2,7 @@ import React from 'react';
 import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
-import { newLocation, postSearch } from "../actions";
+import { newLocation, postSearch, selectRestaurant } from "../actions";
 
 // let eventTimeout;
 
@@ -104,8 +104,13 @@ export class MainMapContainer extends React.Component {
     }
 
   handleMouseLeave = (e) => {
-        console.log(e);
+        this.setState({showingInfoWindow: false})
     }
+
+  // handleClick = (e) => {
+  //   console.log("clicked!");
+  //   console.log(e);
+  // }
 
   render() {
     // const {latitude, longitude} = this.props.location
@@ -167,6 +172,6 @@ const mapStateToProps = state =>({
   location: state.user.location
 })
 
-export default connect(mapStateToProps, { newLocation, postSearch })(GoogleApiWrapper({
+export default connect(mapStateToProps, { newLocation, postSearch, selectRestaurant })(GoogleApiWrapper({
   apiKey: apiKey
 })(MainMapContainer))
