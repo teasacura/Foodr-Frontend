@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Rating, Button, Icon } from 'semantic-ui-react'
+import { Rating, Button } from 'semantic-ui-react'
 
 import { clearRestaurant } from "../actions";
 

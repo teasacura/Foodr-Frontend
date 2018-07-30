@@ -58,7 +58,7 @@ export function postSearch(term, latitude, longitude){
 
 
 export function selectRestaurant(restaurant) {
-  console.log(restaurant);
+  // console.log(restaurant);
   return { type: "SELECT_RESTAURANT", payload: restaurant };
 }
 

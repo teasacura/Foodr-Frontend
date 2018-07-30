@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import ProfileMapContainer from './ProfileMapContainer'
-import { Icon, List, Button } from 'semantic-ui-react'
+import { List, Button } from 'semantic-ui-react'
 import { deleteFavoriteRestaurant } from "../actions";
 
 class Profile extends Component {
