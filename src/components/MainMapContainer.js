@@ -3,6 +3,7 @@ import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
 import { newLocation, postSearch, selectRestaurant } from "../actions";
+import { debounce } from 'lodash'
 
 // let eventTimeout;
 
@@ -105,11 +106,11 @@ export class MainMapContainer extends React.Component {
 
   handleMouseLeave = (e) => {
     console.log(e);
-        // this.setState({
-        //   showingInfoWindow: false,
-        //   activeMarker: {},
-        //   selectedPlace: {},
-        // }, console.log(this.state))
+        this.setState({
+          showingInfoWindow: false,
+          activeMarker: {},
+          selectedPlace: {},
+        }, console.log(this.state))
     }
 
   windowHasOpened = () => {
@@ -137,7 +138,7 @@ export class MainMapContainer extends React.Component {
         ) : (
           <Map google={this.props.google}
             style={mapStyle}
-            initialCenter={{
+            center={{
               lat: this.props.location.latitude,
               lng: this.props.location.longitude
             }}
@@ -148,7 +149,7 @@ export class MainMapContainer extends React.Component {
               return <Marker key={rest.id}
                 // onClick={this.onMarkerClick}
                 onMouseover={this.handleMouseEnter}
-                // onMouseout={this.handleMouseLeave}
+                onMouseout={debounce(this.handleMouseLeave, 1000)}
                 name={rest.name}
                 position={{lat: rest.latitude, lng: rest.longitude}}
               />
@@ -160,7 +161,6 @@ export class MainMapContainer extends React.Component {
             icon={icon}
             name={'Current Location'}
             position={{lat: this.props.location.latitude, lng: this.props.location.longitude}}
-
           />
 
           <InfoWindow
