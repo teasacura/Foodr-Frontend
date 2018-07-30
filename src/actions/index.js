@@ -1,7 +1,8 @@
 //This is just one example of an adapter class for containing our fetches
 import { RestfulAdapter } from "../adapters";
 
-export function fetchInitialRestaurants() {
+export function fetchInitialRestaurants(location) {
+  console.log(location);
   //using thunk, we return are returning a function here instead of
   //a plain object.  Thunk intercepts this returned value, and if it is a
   //function, cancels the normal event of calling our reducers, and
@@ -9,8 +10,11 @@ export function fetchInitialRestaurants() {
   //the fetch request was extracted out to our adapter, but still functions the same
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-    const body = {term: "Food", latitude: 40.7007739, longitude: -73.9877738}
+    // const body = {term: "Food", latitude: 40.7007739, longitude: -73.9877738}
+    const body = {term: "Food", latitude: location.latitude, longitude: location.longitude}
+    // console.log(body);
     RestfulAdapter.createFetch("searches", body).then(data => {
+      console.log("received", data)
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
     });
   };
@@ -100,42 +104,77 @@ export const newLocation = (location) => {
 }
 
 export const getLocation = () => {
-    let action = {};
+  return dispatch => {
+    // let action = {};
 
-    const defaultLocation = {
-            coords: {
-              latitude: 40.7007739,
-              longitude: -73.9877738
-            }
-        };
+    // const defaultLocation = {
+    //         coords: {
+    //           latitude: 40.7007739,
+    //           longitude: -73.9877738
+    //         }
+    //     };
 
     const geolocation = navigator.geolocation;
 
-    const location = geolocation.getCurrentPosition(position => position)
+    // const location = geolocation.getCurrentPosition(position => position)
+    // geolocation.getCurrentPosition(position =>
+    //   // console.log(position))
+    //   position.coords)
+    //   .then(location =>
+    // {
+    //     dispatch({type: "GET_LOCATION", payload: location})
+    //     return location
+    //   }).then(console.log)
+        // position =>
+        //   fetchInitialRestaurants({
+        //     latitude: position.coords.latitude,
+        //     longitude: position.coords.longitude,
+        // }))
+    // }
 
-  //   const location = new Promise((resolve, reject) => {
-  //       if (!geolocation) {
-  //           reject(new Error('Not Supported'));
-  //       }
-  //
-  //   geolocation.getCurrentPosition((position) => {
-  //       resolve(position);
-  //   }, () => {
-  //       reject (new Error('Permission denied'));
-  //   });
-  // });
+    const location = new Promise((resolve, reject) => {
+        if (!geolocation) {
+            reject(new Error('Not Supported'));
+        }
 
-  if (!location) {
-    action = {
-        type: "GET_LOCATION",
-        payload: defaultLocation
-    }
-  } else {
-    action = {
-        type: "GET_LOCATION",
-        payload: location
+    geolocation.getCurrentPosition((position) => {
+        resolve(position);
+    }, () => {
+        reject (new Error('Permission denied'));
+    });
+  }).then(position => sendPosition(position)).then(position => {
+        if (!position) {
+          console.log("no position");
+          dispatch({
+             type: "NO_LOCATION"
+         })
+          // fetchInitialRestaurants({latitude: 40.7007739, longitude: -73.9877738})
+          //   action = {
+          //       type: "GET_LOCATION",
+          //       payload: defaultLocation
+          //   }
+        } else {
+          console.log(position);
+          dispatch({
+            type: "GET_LOCATION",
+            payload: position
+          })
+        }
+
+        return position
+        //
+        // return dispatch => {dispatch(action)};
+      }).then(position => {
+        console.log(position)
+        fetchInitialRestaurants({latitude: position.coords.latitude, longitude: position.coords.longitude})
       }
-    }
+      )
 
-    return dispatch => {dispatch(action)};
+
+    }
   }
+
+
+const sendPosition = (position) => {
+  return position
+}

@@ -27,6 +27,7 @@ export class RestfulAdapter {
     );
   }
   static createFetch(route, body) {
+    console.log(body);
     return fetch(`${baseUrl}/${route}`, postRequest(body)).then(
       responseHandler
     );

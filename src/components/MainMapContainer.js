@@ -149,7 +149,7 @@ export class MainMapContainer extends React.Component {
               return <Marker key={rest.id}
                 // onClick={this.onMarkerClick}
                 onMouseover={this.handleMouseEnter}
-                onMouseout={debounce(this.handleMouseLeave, 1000)}
+                onMouseout={debounce(this.handleMouseLeave, 1500)}
                 name={rest.name}
                 position={{lat: rest.latitude, lng: rest.longitude}}
               />
