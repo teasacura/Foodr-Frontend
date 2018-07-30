@@ -24,7 +24,7 @@ class RestaurantsContainer extends React.Component {
   // }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
