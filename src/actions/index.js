@@ -2,7 +2,7 @@
 import { RestfulAdapter } from "../adapters";
 
 export function fetchInitialRestaurants(location) {
-  console.log(location);
+  // console.log(location);
   //using thunk, we return are returning a function here instead of
   //a plain object.  Thunk intercepts this returned value, and if it is a
   //function, cancels the normal event of calling our reducers, and
@@ -14,7 +14,7 @@ export function fetchInitialRestaurants(location) {
     const body = {term: "Food", latitude: location.latitude, longitude: location.longitude}
     // console.log(body);
     RestfulAdapter.createFetch("searches", body).then(data => {
-      console.log("received", data)
+      // console.log("received", data)
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
     });
   };
@@ -144,7 +144,7 @@ export const getLocation = () => {
     });
   }).then(position => sendPosition(position)).then(position => {
         if (!position) {
-          console.log("no position");
+          // console.log("no position");
           dispatch({
              type: "NO_LOCATION"
          })
@@ -154,7 +154,7 @@ export const getLocation = () => {
           //       payload: defaultLocation
           //   }
         } else {
-          console.log(position);
+          // console.log(position);
           dispatch({
             type: "GET_LOCATION",
             payload: position
@@ -165,7 +165,7 @@ export const getLocation = () => {
         //
         // return dispatch => {dispatch(action)};
       }).then(position => {
-        console.log(position)
+        // console.log(position)
         fetchInitialRestaurants({latitude: position.coords.latitude, longitude: position.coords.longitude})
       }
       )
