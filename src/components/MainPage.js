@@ -38,6 +38,7 @@ class MainPage extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div id="home">
         { this.props.loggedIn ? (

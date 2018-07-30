@@ -116,7 +116,7 @@ export class MainMapContainer extends React.Component {
     const title = document.getElementById("title")
     title.addEventListener("click", (e) => {
       const selection = this.props.restaurants.filter(rest => rest.name === e.target.innerHTML)
-      this.props.selectRestaurant(selection)
+      this.props.selectRestaurant(selection[0])
       this.setState({showingInfoWindow: false}, console.log(this.state))
     })
   }
