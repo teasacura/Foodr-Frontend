@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null, loading: false, formData: {name: "", title: "", key_skill: ""} }, action) => {
   switch (action.type) {
     case "RESTAURANTS_LOADING":
-      console.log(action);
+      // console.log(action);
       return {
         ...state,
         loading: true
@@ -74,7 +74,7 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         loading: false
       };
     case "GET_LOCATION": {
-      console.log(action.payload);
+      // console.log(action.payload);
           return {
               ...state,
               location: {
