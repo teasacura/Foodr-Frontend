@@ -11,8 +11,14 @@ import { connect } from "react-redux";
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
     this.props.getLocation();
-    this.props.fetchInitialRestaurants()
+    // this.props.fetchInitialRestaurants(this.props.location)
       // "Food", this.props.location.latitude, this.props.location.longitude)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.props.fetchInitialRestaurants(this.props.location)
+    }
   }
 
   handleFavoriteClick = (id) => {
@@ -24,7 +30,8 @@ class RestaurantsContainer extends React.Component {
   // }
 
   render() {
-    // console.log(this.props)
+    console.log(this.props)
+    // this.props.fetchInitialRestaurants(this.props.location)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">

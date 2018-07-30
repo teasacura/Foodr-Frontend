@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm'
 import { connect } from "react-redux";
-import { logIn, logOut } from "../actions";
+import { logIn, logOut} from "../actions";
 import RestaurantsContainer from "../containers/RestaurantsContainer"
 // import { Link, Redirect } from 'react-router-dom'
 
