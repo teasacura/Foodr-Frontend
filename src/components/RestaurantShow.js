@@ -39,7 +39,7 @@ class RestaurantShow extends React.Component {
       //     </div>
       //   )
       // } else {
-    const { id, image_url, name, address, phone, url, is_closed, reviews, rating, price, do_delivery, restlatitude, restlongitude } = this.props.selectedRestaurant[0]
+    const { id, image_url, name, address, phone, categories, url, is_closed, reviews, rating, price, do_delivery, restlatitude, restlongitude } = this.props.selectedRestaurant
     const { latitude, longitude } = this.props.location
     return (
       // <div className="ui two column centered grid" style={style}>
@@ -75,6 +75,7 @@ class RestaurantShow extends React.Component {
             <p>{do_delivery ? "Delivers Food" : "No Food Delivery"}</p>
           </div>
           <div className="column">
+            <p>Category: {categories}</p>
             <p><a href={url}>YelpSite</a></p>
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
           </div>
