@@ -32,7 +32,7 @@ class RestaurantShow extends React.Component {
     return (
       // <div className="ui two column centered grid" style={style}>
 
-        <div className="ui container segment" style={style}>
+        <div className="ui container segment center aligned" style={style}>
           <div className="column">
             <Button floated="right" circular icon="close" onClick={() => this.props.clearRestaurant()}/>
             {/* <Button floated="right" inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button> */}
@@ -55,7 +55,7 @@ class RestaurantShow extends React.Component {
           <h3><a
             target="_blank"
             href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.latitude}%2C${this.props.longitude}&destination=${latitude}%2C${longitude}`}>{address}</a></h3>
-          <div className="ui four column doubling stackable grid container">
+          <div className="ui two column doubling stackable grid container">
           <div className="column">
             <p>Number of Reviews: {reviews}</p>
             <p>Rating: {rating} </p>
