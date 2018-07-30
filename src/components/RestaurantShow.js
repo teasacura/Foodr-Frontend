@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Rating, Button } from 'semantic-ui-react'
+import { Rating, Button, Icon } from 'semantic-ui-react'
 
 import { clearRestaurant } from "../actions";
 
@@ -35,7 +35,7 @@ class RestaurantShow extends React.Component {
         <div className="ui container segment" style={style}>
           <div className="column">
             <Button floated="right" circular icon="close" onClick={() => this.props.clearRestaurant()}/>
-            <Button floated="right" inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button>
+            {/* <Button floated="right" inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button> */}
           {/* </div> */}
           {/* <div className="column"> */}
 
@@ -51,24 +51,25 @@ class RestaurantShow extends React.Component {
               <p>Price: {price}</p>
               {/* <pre>{JSON.stringify(this.state, null, 2)} onRate={this.handleRate}</pre> */}
             </div>
-          {/* </div> */}
+          </div>
           <h3><a
             target="_blank"
             href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.latitude}%2C${this.props.longitude}&destination=${latitude}%2C${longitude}`}>{address}</a></h3>
-          {/* <div className="ui four column doubling stackable grid container"> */}
-          {/* <div className="column"> */}
+          <div className="ui four column doubling stackable grid container">
+          <div className="column">
             <p>Number of Reviews: {reviews}</p>
             <p>Rating: {rating} </p>
             <p>{do_delivery ? "Delivers Food" : "No Food Delivery"}</p>
-          {/* </div> */}
-          {/* <div className="column"> */}
+          </div>
+          <div className="column">
             <p><a href={url}>YelpSite</a></p>
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
-          {/* </div> */}
           </div>
-        </div>
-
-      // </div>
+          </div>
+          <div>
+            <Button fluid onClick={() => this.props.addFavorite(id)}>Add to Favorites</Button>
+          </div>
+       </div>
     );
   }
 }
