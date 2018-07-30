@@ -13,9 +13,9 @@ class RestaurantList extends React.Component {
 //     return (
 //       <div>
 //         <h2>Restaurants</h2>
-//         {this.props.restaurants.restaurants.length ? (
+//         {this.props.restaurants !== undefined ? (
 //           <div className="column">
-//             {this.props.restaurants.restaurants.map(rest => <RestaurantListEl key={rest.id} restaurant={rest} />)}
+//             {this.props.restaurants.map(rest => <RestaurantListEl key={rest.id} restaurant={rest} />)}
 //           </div>
 //         ) : (
 //           <p>Loading</p>

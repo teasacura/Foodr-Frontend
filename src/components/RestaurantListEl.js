@@ -7,6 +7,7 @@ import { Rating } from 'semantic-ui-react'
 const RestaurantListEl = (props) => {
     const { restaurant } = props
     return (
+      // className="ui segment"
       <div className="ui segment" onClick={() => {props.selectRestaurant(restaurant)}}>
           <div>{restaurant.name} <Rating defaultRating={restaurant.rating} maxRating={5}/> {restaurant.price}</div>
       </div>

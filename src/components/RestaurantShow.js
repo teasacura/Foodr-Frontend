@@ -19,6 +19,10 @@ class RestaurantShow extends React.Component {
     }
 
   }
+
+  componentDidUpdate() {
+
+  }
     //
     // handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
 
@@ -28,7 +32,15 @@ class RestaurantShow extends React.Component {
 
     render(){
       console.log(this.props);
-    const { id, image_url, name, address, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
+      // if (this.props.selectedRestaurant === undefined) {
+      //   return (
+      //     <div>
+      //       <p>Loading...</p>
+      //     </div>
+      //   )
+      // } else {
+    const { id, image_url, name, address, phone, url, is_closed, reviews, rating, price, do_delivery, restlatitude, restlongitude } = this.props.selectedRestaurant[0]
+    const { latitude, longitude } = this.props.location
     return (
       // <div className="ui two column centered grid" style={style}>
 
@@ -54,9 +66,10 @@ class RestaurantShow extends React.Component {
           </div>
           <h3><a
             target="_blank"
-            href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.latitude}%2C${this.props.longitude}&destination=${latitude}%2C${longitude}`}>{address}</a></h3>
+            href={`https://www.google.com/maps/dir/?api=1&origin=${latitude}%2C${longitude}&destination=${restlatitude}%2C${restlongitude}`}>{address}</a></h3>
           <div className="ui two column doubling stackable grid container">
           <div className="column">
+            <p>Phone: <a href={`tel:+${phone}`}>{phone}</a></p>
             <p>Number of Reviews: {reviews}</p>
             <p>Rating: {rating} </p>
             <p>{do_delivery ? "Delivers Food" : "No Food Delivery"}</p>
@@ -71,14 +84,16 @@ class RestaurantShow extends React.Component {
           </div>
        </div>
     );
+  // }
   }
 }
 
-const mapStateToProps = state => ({
-  latitude: state.user.location.latitude,
-  longitude: state.user.location.longitude
-  // state.restaurants.find(r => r.id === state.selectedRestaurant)
-});
+// const mapStateToProps = state => ({
+//   selectedRestaurant: state.restaurants.selectedRestaurant,
+//   latitude: state.user.location.latitude,
+//   longitude: state.user.location.longitude
+//   // state.restaurants.find(r => r.id === state.selectedRestaurant)
+// });
 
 
-export default connect(mapStateToProps, { clearRestaurant })(RestaurantShow);
+export default connect(null, { clearRestaurant })(RestaurantShow);
