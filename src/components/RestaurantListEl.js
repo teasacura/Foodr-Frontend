@@ -9,7 +9,8 @@ const RestaurantListEl = (props) => {
     return (
       // className="ui segment"
       <div className="ui segment" onClick={() => {props.selectRestaurant(restaurant)}}>
-          <div>{restaurant.name} <Rating defaultRating={restaurant.rating} maxRating={5}/> {restaurant.price}</div>
+          <div>{restaurant.name} <Rating defaultRating={restaurant.rating} maxRating={5}/>{restaurant.price}</div>
+          {/* <div className="ui segment">{restaurant.distance}</div> */}
       </div>
     );
 }
