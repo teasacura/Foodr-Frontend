@@ -82,8 +82,8 @@ export class MainMapContainer extends React.Component {
   }
 
   handleMouseEnter = (props, marker, e) => {
-    console.log(marker);
-    console.log('state marker', this.state.activeMarker);
+    // console.log(marker);
+    // console.log('state marker', this.state.activeMarker);
       if (this.state.activeMarker.name !== marker.name) {
         this.setState({
             selectedPlace: props,
@@ -104,13 +104,22 @@ export class MainMapContainer extends React.Component {
     }
 
   handleMouseLeave = (e) => {
-        this.setState({showingInfoWindow: false})
+    console.log(e);
+        // this.setState({
+        //   showingInfoWindow: false,
+        //   activeMarker: {},
+        //   selectedPlace: {},
+        // }, console.log(this.state))
     }
 
-  // handleClick = (e) => {
-  //   console.log("clicked!");
-  //   console.log(e);
-  // }
+  windowHasOpened = () => {
+    const title = document.getElementById("title")
+    title.addEventListener("click", (e) => {
+      const selection = this.props.restaurants.filter(rest => rest.name === e.target.innerHTML)
+      this.props.selectRestaurant(selection)
+      this.setState({showingInfoWindow: false}, console.log(this.state))
+    })
+  }
 
   render() {
     // const {latitude, longitude} = this.props.location
@@ -120,6 +129,8 @@ export class MainMapContainer extends React.Component {
             url: "http://www.portlandchronicle.com/wp-content/uploads/leaflet-maps-marker-icons/map-pin-blue-th.png", // url
             scaledSize: new this.props.google.maps.Size(25, 40), // scaled size
         };
+    // const iw = this.infowindow = new google.maps.InfoWindow({ content: `<div id="iwc"><h1></h1><div/>` });
+
     return (
       <div>
         {!this.props.location ? (<div>Loading...</div>
@@ -153,10 +164,11 @@ export class MainMapContainer extends React.Component {
           />
 
           <InfoWindow
+            onOpen={this.windowHasOpened}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              <h1 id="title">{this.state.selectedPlace.name}</h1>
             </div>
           </InfoWindow>
         </Map>

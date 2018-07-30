@@ -28,7 +28,7 @@ class RestaurantsContainer extends React.Component {
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
-        <div className="six wide column">
+        <div className="six wide column mobile hidden">
           {this.props.restaurants !== null ? (
             <RestaurantList restaurants={this.props.restaurants}/>
           ) : (
@@ -38,7 +38,11 @@ class RestaurantsContainer extends React.Component {
           <div className="ten wide column">
               <MainMapContainer />
           {this.props.selectedRestaurant !== null ? (
-            <RestaurantShow selectedRestaurant={this.props.selectedRestaurant} addFavorite={this.handleFavoriteClick}/>
+            <RestaurantShow
+              location={this.props.location}
+              selectedRestaurant={this.props.selectedRestaurant}
+              addFavorite={this.handleFavoriteClick}
+            />
           ) : (
             null
           )}
