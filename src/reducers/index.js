@@ -73,6 +73,16 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         currentUser: action.payload,
         loading: false
       };
+    case "USER_DONE":
+      return {
+        ...state,
+        loading: false
+      };
+    case "LOCATION_LOADING":
+      return {
+        ...state,
+        loading: true
+      }
     case "GET_LOCATION": {
       // console.log(action.payload);
           return {

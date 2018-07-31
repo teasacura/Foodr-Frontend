@@ -124,7 +124,6 @@ export class MainMapContainer extends React.Component {
 
   render() {
     // const {latitude, longitude} = this.props.location
-    // console.log(this.props);
     const icon = {
       // https://loc8tor.co.uk/wp-content/uploads/2015/08/stencil.png
             url: "http://www.portlandchronicle.com/wp-content/uploads/leaflet-maps-marker-icons/map-pin-blue-th.png", // url
@@ -134,11 +133,20 @@ export class MainMapContainer extends React.Component {
 
     return (
       <div>
-        {!this.props.location ? (<div>Loading...</div>
+        {this.props.loading ? (
+          // <div>Loading...</div>
+          <div className="ui segment">
+            <div className="ui active inverted dimmer">
+              <div className="ui mini text loader">Loading</div>
+            </div>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
         ) : (
           <Map google={this.props.google}
             style={mapStyle}
-            center={{
+            initialCenter={{
               lat: this.props.location.latitude,
               lng: this.props.location.longitude
             }}
@@ -181,7 +189,8 @@ export class MainMapContainer extends React.Component {
 
 const mapStateToProps = state =>({
   restaurants: state.restaurants.restaurants,
-  location: state.user.location
+  location: state.user.location,
+  loading: state.user.loading
 })
 
 export default connect(mapStateToProps, { newLocation, postSearch, selectRestaurant })(GoogleApiWrapper({
