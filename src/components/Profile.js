@@ -30,14 +30,14 @@ render() {
                         </List.Content>
                       </List.Item>
                     )
-                  )) : (<p>Loading</p>)
+                  )) : (<p>Loading?</p>)
                 }
               </List>
               </div>
           </div>
           <ProfileMapContainer />
       </div>
-      ) : (<p>Loading</p>)
+    ) : (<p>Loading!</p>)
           }
     </div>
   )
