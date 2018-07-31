@@ -39,8 +39,7 @@ class RestaurantShow extends React.Component {
       //     </div>
       //   )
       // } else {
-    const { id, image_url, name, address, phone, categories, url, is_closed, reviews, rating, price, do_delivery, restlatitude, restlongitude } = this.props.selectedRestaurant
-    const { latitude, longitude } = this.props.location
+    const { id, image_url, name, address, phone, categories, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
     return (
       // <div className="ui two column centered grid" style={style}>
 
@@ -66,7 +65,7 @@ class RestaurantShow extends React.Component {
           </div>
           <h3><a
             target="_blank"
-            href={`https://www.google.com/maps/dir/?api=1&origin=${latitude}%2C${longitude}&destination=${restlatitude}%2C${restlongitude}`}>{address}</a></h3>
+            href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${latitude}%2C${longitude}`}>{address}</a></h3>
           <div className="ui two column doubling stackable grid container">
           <div className="column">
             <p>Phone: <a href={`tel:+${phone}`}>{phone}</a></p>
