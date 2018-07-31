@@ -26,7 +26,7 @@ render() {
                       <List.Item key={rest.id}>
                         {/* <List.Icon name='marker' /> */}
                         <List.Content>
-                          <List.Header>{rest.name} <Button circular icon="close" onClick={() => this.props.deleteFavoriteRestaurant(rest.favorite_id)}></Button></List.Header>
+                          <List.Header><a target="_blank" href={`${rest.url}`}>{rest.name} </a><Button circular icon="close" onClick={() => this.props.deleteFavoriteRestaurant(rest.favorite_id)}></Button></List.Header>
                         </List.Content>
                       </List.Item>
                     )

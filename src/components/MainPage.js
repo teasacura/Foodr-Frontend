@@ -5,6 +5,13 @@ import { logIn, logOut, getLocation} from "../actions";
 import RestaurantsContainer from "../containers/RestaurantsContainer"
 // import { Link, Redirect } from 'react-router-dom'
 
+// const homeStyle = {
+//   backgroundImage: `url("./pizza-image.jpg") !important`,
+//   backgroundPosition: `center !important`,
+//   backgroundSize: `contain !important`
+// }
+
+
 class MainPage extends Component {
 
   componentDidMount(){
@@ -42,6 +49,7 @@ class MainPage extends Component {
   render() {
     // console.log(this.props);
     return (
+      // <div id="home">
       <div id="home">
         { this.props.loggedIn ? (
           <div>

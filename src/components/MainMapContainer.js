@@ -123,6 +123,7 @@ export class MainMapContainer extends React.Component {
   }
 
   render() {
+    // console.log(this.props);
     // const {latitude, longitude} = this.props.location
     const icon = {
       // https://loc8tor.co.uk/wp-content/uploads/2015/08/stencil.png

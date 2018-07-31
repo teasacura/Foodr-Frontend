@@ -5,6 +5,7 @@ import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import './App.css'
 
+
 class App extends Component {
   render() {
     return (

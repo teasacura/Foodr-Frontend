@@ -41,10 +41,7 @@ class NavBar extends Component {
     return (
       <div>
         {this.props.loggedIn ? (
-          <div className="ui top attached tabular menu">
-            <a className="item" onClick={this.handleLogout}>
-              Log Out
-            </a>
+          <div className="ui menu">
             <NavLink
               to="/profile"
               exact
@@ -58,19 +55,41 @@ class NavBar extends Component {
               id="site-name"
             >Foodr Search</NavLink>
             <div className="right menu">
-              <div className="item">
+              {/* <div className="ui selection dropdown">
+                <input type="hidden" name="gender">
+                <i className="dropdown icon"></i>
+                <div className="default text">Gender</div>
+                <div className="menu">
+                  <div className="item" data-value="1">Male</div>
+                  <div className="item" data-value="1">Male</div>
+                  <div className="item" data-value="2">Female</div>
+                </div>
+              </div>
+              <select name="price" multiple="" className="ui selection dropdown">
+                <option value="1, 2, 3, 4">All Prices</option>
+                <option value="1">$</option>
+                <option value="2">$$</option>
+                <option value="3">$$$</option>
+                <option value="4">$$$$</option>
+              </select> */}
+              <div className=" fluid item">
                 <div className="ui transparent icon input">
                   <input id="search" type="search" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
                   <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
+              <a className="item" onClick={this.handleLogout}>
+                Log Out
+              </a>
             </div>
           </div>
         ) : (
-          <div className="ui top attached tabular menu">
-            <a className="active item">
-              Log In
-            </a>
+          <div className="ui menu">
+            <div className="right menu">
+              <a className="item">
+                Log In
+              </a>
+            </div>
           </div>
         )}
       </div>

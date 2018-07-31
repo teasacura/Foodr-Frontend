@@ -1,3 +1,9 @@
+/* body {
+  background-image: url("./pizza-image.jpg") !important;
+  background-position: center !important;
+  background-size: contain !important;
+} */
+
 #home form button, #topic > div button, #score-card div button, #profile div button, #signup form button {
   background: #4d94ff;
   color: white;
