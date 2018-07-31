@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import image from "../pizza-image.jpg"
 // import { Link, Redirect } from 'react-router-dom'
 
 class LoginForm extends Component {
@@ -35,6 +36,7 @@ class LoginForm extends Component {
 
   render() {
     const { fields } = this.state;
+    // styles={{ backgroundImage: `url(${image})`}}
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
