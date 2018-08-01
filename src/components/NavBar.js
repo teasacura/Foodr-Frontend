@@ -75,6 +75,7 @@ class NavBar extends Component {
               <div className=" fluid item">
                 <div className="ui transparent icon input">
                   <input id="search" type="search" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
+                  {/* onClick={this.handleSubmit} */}
                   <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
