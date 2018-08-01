@@ -134,7 +134,7 @@ export class MainMapContainer extends React.Component {
 
     return (
       <div>
-        {this.props.loading ? (
+        {/* {this.props.loading ? (
           // <div>Loading...</div>
           <div className="ui segment">
             <div className="ui active inverted dimmer">
@@ -144,7 +144,7 @@ export class MainMapContainer extends React.Component {
             <p></p>
             <p></p>
           </div>
-        ) : (
+        ) : ( */}
           <Map google={this.props.google}
             style={mapStyle}
             initialCenter={{
@@ -181,8 +181,8 @@ export class MainMapContainer extends React.Component {
             </div>
           </InfoWindow>
         </Map>
-      )
-    }
+      // )
+    // }
       </div>
     );
   }
