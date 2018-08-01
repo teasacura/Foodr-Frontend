@@ -52,7 +52,7 @@ class LoginForm extends Component {
   // };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const { fields } = this.state;
     // styles={{ backgroundImage: `url(${image})`}}
     return (

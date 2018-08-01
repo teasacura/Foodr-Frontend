@@ -2,7 +2,7 @@
 import { RestfulAdapter } from "../adapters";
 
 export function fetchInitialRestaurants(location) {
-  // console.log(location);
+  console.log("inside of fetch", location);
   //using thunk, we return are returning a function here instead of
   //a plain object.  Thunk intercepts this returned value, and if it is a
   //function, cancels the normal event of calling our reducers, and
@@ -148,22 +148,6 @@ export const getLocation = () => {
 
     const geolocation = navigator.geolocation;
 
-    // const location = geolocation.getCurrentPosition(position => position)
-    // geolocation.getCurrentPosition(position =>
-    //   // console.log(position))
-    //   position.coords)
-    //   .then(location =>
-    // {
-    //     dispatch({type: "GET_LOCATION", payload: location})
-    //     return location
-    //   }).then(console.log)
-        // position =>
-        //   fetchInitialRestaurants({
-        //     latitude: position.coords.latitude,
-        //     longitude: position.coords.longitude,
-        // }))
-    // }
-
     const location = new Promise((resolve, reject) => {
         if (!geolocation) {
             reject(new Error('Not Supported'));
@@ -186,7 +170,7 @@ export const getLocation = () => {
           //       payload: defaultLocation
           //   }
         } else {
-          // console.log(position);
+          console.log("inside call", position);
           dispatch({
             type: "GET_LOCATION",
             payload: position
@@ -194,10 +178,8 @@ export const getLocation = () => {
         }
 
         return position
-        //
-        // return dispatch => {dispatch(action)};
       }).then(position => {
-        // console.log(position)
+        console.log("inside getLocation", position)
         fetchInitialRestaurants({latitude: position.coords.latitude, longitude: position.coords.longitude})
       }
       )

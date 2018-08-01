@@ -32,8 +32,6 @@ class MainPage extends Component {
     )
     }
 
-    this.props.getLocation();
-
   }
 
   handleLogin = (user) => {
