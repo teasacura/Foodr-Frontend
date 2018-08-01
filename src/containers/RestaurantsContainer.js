@@ -9,10 +9,10 @@ import { connect } from "react-redux";
 
 
 class RestaurantsContainer extends React.Component {
-  // componentDidMount() {
-  //   this.props.getLocation()
+  componentDidMount() {
+    this.props.getLocation()
   //   this.props.fetchInitialRestaurants(this.props.location)
-  // }
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -29,7 +29,8 @@ class RestaurantsContainer extends React.Component {
   // }
 
   render() {
-    // console.log(this.props)
+    console.log(this.props.location)
+    console.log(this.props.loading)
     // this.props.fetchInitialRestaurants(this.props.location)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
