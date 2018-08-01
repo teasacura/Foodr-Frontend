@@ -21,6 +21,36 @@ export function fetchInitialRestaurants(location) {
   };
 }
 
+export function createNewUser(body){
+
+  return dispatch => {
+    dispatch({ type: "USER_LOADING" })
+    const newMessage = RestfulAdapter.createFetch("users", body)
+    .then(obj => alert(obj.msg))
+    dispatch({ type: "USER_DONE" })
+
+    return newMessage
+  }
+    // {
+    //   dispatch({ type: "LOG_IN", payload: user})
+    // });
+}
+
+export function postLogin(body){
+
+  return dispatch => {
+    dispatch({ type: "USER_LOADING" })
+    const newMessage = RestfulAdapter.createFetch("api/v1/login", body)
+      // obj => alert(obj.msg))
+    dispatch({ type: "USER_DONE" })
+
+    return newMessage
+  }
+    // {
+    //   dispatch({ type: "LOG_IN", payload: user})
+    // });
+}
+
 // export function fetchCurrentUser(id) {
 //   return dispatch => {
 //     dispatch({ type: "USER_LOADING" });

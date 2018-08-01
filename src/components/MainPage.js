@@ -37,6 +37,7 @@ class MainPage extends Component {
   }
 
   handleLogin = (user) => {
+    console.log(user);
     const token = localStorage.getItem('token')
     if (!!token) {
       console.log("token present")
@@ -57,7 +58,7 @@ class MainPage extends Component {
           </div>
         ) :(
           <div>
-            <LoginForm handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedIn={this.props.loggedIn}/>
+            <LoginForm history={this.props.history} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedIn={this.props.loggedIn}/>
           </div>
         )
       }

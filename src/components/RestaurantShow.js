@@ -75,7 +75,7 @@ class RestaurantShow extends React.Component {
           </div>
           <div className="column">
             <p>Category: {categories}</p>
-            <p><a href={url}>YelpSite</a></p>
+            <p><a target="_blank" href={url}>YelpSite</a></p>
             <p>{is_closed ? "Currently Closed" : "Currently Open" }</p>
           </div>
           </div>

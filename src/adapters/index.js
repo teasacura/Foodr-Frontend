@@ -27,7 +27,8 @@ export class RestfulAdapter {
     );
   }
   static createFetch(route, body) {
-    // console.log(body);
+    console.log(route);
+    console.log(body);
     return fetch(`${baseUrl}/${route}`, postRequest(body)).then(
       responseHandler
     );
@@ -73,8 +74,7 @@ function postRequest(body) {
 //response.ok, which will be true if the status is below 400 and false if above.
 function responseHandler(response) {
     if (response.ok) {
-      return response.json();
-    } else {
-      console.log("ERROR", response.json());
+      return response.json()
     }
+    throw alert('Something went wrong')
 }

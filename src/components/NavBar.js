@@ -86,9 +86,15 @@ class NavBar extends Component {
         ) : (
           <div className="ui menu">
             <div className="right menu">
-              <a className="item">
+              <NavLink
+                to="/"
+                exact
+                className="active item"
+                id="site-name"
+              >Log In</NavLink>
+              {/* <a className="item">
                 Log In
-              </a>
+              </a> */}
             </div>
           </div>
         )}
