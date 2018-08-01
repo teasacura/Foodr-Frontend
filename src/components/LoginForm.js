@@ -52,31 +52,46 @@ class LoginForm extends Component {
   // };
 
   render() {
+    console.log(this.state);
     const { fields } = this.state;
     // styles={{ backgroundImage: `url(${image})`}}
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="ui field">
-            <label>Email: </label>
-            <input
-              name="email"
-              value={fields.email}
-              onChange={this.handleChange}
-            />
+      <div className="ui segment center landing masthead">
+      {/* <div className="ui middle aligned center aligned grid"> */}
+        <div className="ui text container">
+          <h1 className="ui inverted header">Welcome to FoodR!</h1>
+          <h2 className="ui inverted header">Finding food near you!</h2>
+        </div>
+        <form onSubmit={this.handleSubmit} className="ui large form">
+          <div className="ui stacked segment">
+            <div className="field">
+              <div className="ui left icon input">
+                <i className="user icon"></i>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="E-mail address"
+                  value={fields.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="field">
+              <div className="ui left icon input">
+                <i className="lock icon"></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={fields.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <button type="submit" className="ui fluid inverted green button">
+              Login
+            </button>
           </div>
-          <div className="ui field">
-            <label>Password: </label>
-            <input
-              name="password"
-              type="password"
-              value={fields.password}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit" className="ui basic green button">
-            Login
-          </button>
           <Link to="/signup" >Need to sign up?</Link>
         </form>
       </div>

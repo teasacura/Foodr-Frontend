@@ -4,7 +4,41 @@
   background-size: contain !important;
 } */
 
-#home form button, #topic > div button, #score-card div button, #profile div button, #signup form button {
+.landing {
+  background: url("./pizza-image.jpg") #103d50 70% 30% !important;
+}
+
+.landing.segment{
+  min-height: 750px;
+}
+
+.landing h1, h2 {
+  text-align: center;
+}
+
+
+/* .ui[class*="center aligned"].segment {
+    text-align: center;
+} */
+
+.masthead h1.ui.header {
+    margin-top: 2.5em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: normal
+}
+
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+
+.ui.header {
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+/* #home form button, #topic > div button, #score-card div button, #profile div button, #signup form button {
   background: #4d94ff;
   color: white;
   border: none;
@@ -15,7 +49,7 @@
   #home form button:hover, #topic > div button:hover, #score-card div button:hover, #profile div button:hover, #signup form button:hover {
     background: #1D88E3; }
   #home form button:active, #topic > div button:active, #score-card div button:active, #profile div button:active, #signup form button:active {
-    background: #6EB0E8; }
+    background: #6EB0E8; } */
 
 #home form a {
   width: 100%;
@@ -39,7 +73,7 @@
       box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.2);
       background: #fafafa;
       font-size: 1.25rem; }
-      #home form div {
+      /* #home form div {
         display: flex;
         flex-wrap: wrap;
         justfiy-content: center; }
@@ -55,7 +89,7 @@
         font-size: 1.25rem;
         margin: 1rem auto; }
       #home form a {
-        font-size: 1rem; }
+        font-size: 1rem; } */
 
   #nav {
     background: #111;
