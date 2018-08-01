@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import image from "../pizza-image.jpg"
-import { Link } from 'react-router-dom'
+import { logIn, createNewUser } from '../actions'
 import { connect } from "react-redux";
-import { postLogin } from '../actions'
+// import { Link, Redirect } from 'react-router-dom'
 
-class LoginForm extends Component {
+class SignUp extends Component {
 
   state = {
     fields: {
@@ -22,40 +21,29 @@ class LoginForm extends Component {
     e.preventDefault();
     const body = this.state.fields
 
-    this.props.postLogin(body)
-    .then(user => this.props.handleLogin(user))
-    .catch(error => console.log(this.props.history.push("/")))
+    this.props.createNewUser(body)
+    .then(
+      this.props.history.push("/")
+    )
 
-    this.setState({
-      fields: {
-        email: '',
-        password: ''
-      }
-    })
-  }
+  };
 
-
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state.fields)
-    // }
-    // fetch('http://localhost:3000/api/v1/login', options)
-    // .then(resp => resp.json())
-    // .then(user => {
-    //     this.props.handleLogin(user)
-    // })
-
-  // };
+  // handleLogin = (user) => {
+  //   const token = localStorage.getItem('token')
+  //   if (!!token) {
+  //     console.log("token present")
+  //   } else {
+  //     localStorage.setItem('token', user.jwt)
+  //   }
+  //   this.props.logIn(user)
+  // }
 
   render() {
     const { fields } = this.state;
     // styles={{ backgroundImage: `url(${image})`}}
     return (
-      <div>
+      <div id="home">
+        <h1>Sign Up!</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="ui field">
             <label>Email: </label>
@@ -75,9 +63,8 @@ class LoginForm extends Component {
             />
           </div>
           <button type="submit" className="ui basic green button">
-            Login
+            Sign Up
           </button>
-          <Link to="/signup" >Need to sign up?</Link>
         </form>
       </div>
     );
@@ -85,4 +72,5 @@ class LoginForm extends Component {
 }
 
 
-export default connect(null, { postLogin })(LoginForm);
+// export default SignUp;
+export default connect(null, { logIn, createNewUser })(SignUp);
