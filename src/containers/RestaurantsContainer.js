@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimmer, Button } from 'semantic-ui-react'
 
 import RestaurantList from "./RestaurantList";
 import RestaurantShow from "../components/RestaurantShow";
@@ -9,6 +10,10 @@ import { connect } from "react-redux";
 
 
 class RestaurantsContainer extends React.Component {
+
+  state ={
+    active: true
+  }
   // componentDidMount() {
   //   this.props.getLocation()
   //   this.props.fetchInitialRestaurants(this.props.location)
@@ -24,17 +29,22 @@ class RestaurantsContainer extends React.Component {
     this.props.postFavoriteRestaurant(id)
   }
 
-  // handleClick = (e) => {
-  //   console.log(e.target);
-  // }
+  handleSearchClick = (e) => {
+    this.props.getLocation()
+    this.setState({active:false})
+  }
 
   render() {
+    const { active } = this.state
     console.log(this.props.location)
     console.log(this.props.loading)
     // this.props.fetchInitialRestaurants(this.props.location)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
+        <Dimmer active={active} page>
+          <Button negative size="big" onClick={this.handleSearchClick}>Search Food Near Me!</Button>
+        </Dimmer>
         <div className="six wide column mobile hidden">
           {this.props.restaurants !== null ? (
             <RestaurantList restaurants={this.props.restaurants}/>
@@ -55,6 +65,7 @@ class RestaurantsContainer extends React.Component {
           )}
         </div>
       </div>
+
     );
   }
 }

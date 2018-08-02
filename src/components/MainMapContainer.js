@@ -23,9 +23,9 @@ export class MainMapContainer extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getLocation()
-  }
+  // componentDidMount() {
+  //   this.props.getLocation()
+  // }
 
   shouldComponentUpdate(nextProps, nextState) {
       if (this.state.activeMarker === nextState.activeMarker && this.props === nextProps) {
@@ -138,7 +138,7 @@ export class MainMapContainer extends React.Component {
 
     return (
       <div>
-        {/* {this.props.loading ? (
+        {this.props.location.latitude === undefined ? (
           // <div>Loading...</div>
           <div className="ui segment">
             <div className="ui active inverted dimmer">
@@ -148,7 +148,7 @@ export class MainMapContainer extends React.Component {
             <p></p>
             <p></p>
           </div>
-        ) : ( */}
+        ) : (
           <Map google={this.props.google}
             style={mapStyle}
             center={{
@@ -185,8 +185,8 @@ export class MainMapContainer extends React.Component {
             </div>
           </InfoWindow>
         </Map>
-      {/* ) */}
-    {/* } */}
+       )
+     }
       </div>
     );
   }
