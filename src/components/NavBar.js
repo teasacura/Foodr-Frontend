@@ -43,14 +43,20 @@ class NavBar extends Component {
         {this.props.loggedIn ? (
           <div className="ui menu">
             <NavLink
+              to="/"
+              exact
+              className="link red item"
+              id="site-name"
+            >Foodr</NavLink>
+            <NavLink
               to="/profile"
               exact
-              className="item"
+              className="link item"
             >Profile</NavLink>
             <NavLink
               to="/"
               exact
-              className="active item"
+              className="link item"
             >Foodr Search</NavLink>
             <div className="right menu">
               {/* <div className="ui selection dropdown">
@@ -87,14 +93,14 @@ class NavBar extends Component {
             <NavLink
               to="/"
               exact
-              className="item"
+              className="link active red item"
               id="site-name"
             >Foodr</NavLink>
             <div className="right menu">
               <NavLink
                 to="/"
                 exact
-                className="item"
+                className="link item"
               >Log In</NavLink>
               {/* <a className="item">
                 Log In
