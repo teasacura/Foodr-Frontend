@@ -26,7 +26,7 @@ render() {
                       <List.Item key={rest.id}>
                         <List.Content>
                           {/* <List.Header><a target="_blank" href={`${rest.url}`}>{rest.name} </a></List.Header> */}
-                          <Modal trigger={<Button>{rest.name}</Button>}>
+                          <Modal trigger={<Button>{rest.name}</Button>} closeIcon>
                           <Modal.Header>Profile Picture</Modal.Header>
                           <Modal.Content image scrolling>
                             <Image size='small' src={rest.image_url} wrapped />
