@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimmer, Button } from 'semantic-ui-react'
+import { delay } from 'lodash'
 
 import RestaurantList from "./RestaurantList";
 import RestaurantShow from "../components/RestaurantShow";
@@ -30,7 +31,14 @@ class RestaurantsContainer extends React.Component {
   }
 
   handleSearchClick = (e) => {
+    // const button = document.querySelector("#dimmer-button")
+    e.target.innerHTML = "Searching..."
     this.props.getLocation()
+    delay(this.deactivateDimmer, 2000)
+
+  }
+
+  deactivateDimmer = () => {
     this.setState({active:false})
   }
 
@@ -43,7 +51,7 @@ class RestaurantsContainer extends React.Component {
     return (
       <div className="ui grid">
         <Dimmer active={active} page>
-          <Button negative size="big" onClick={this.handleSearchClick}>Search Food Near Me!</Button>
+          <Button id="dimmer-button" negative size="big" onClick={this.handleSearchClick}>Search Food Near Me!</Button>
         </Dimmer>
         <div className="six wide column mobile hidden">
           {this.props.restaurants !== null ? (
