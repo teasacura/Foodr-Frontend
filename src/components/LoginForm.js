@@ -13,6 +13,10 @@ class LoginForm extends Component {
     }
   };
 
+  // componentDidMount(){
+  //   this.props.getLocation()
+  // }
+
   handleChange = (e) => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });

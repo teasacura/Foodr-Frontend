@@ -5,11 +5,11 @@
 } */
 
 .landing {
-  background: url("./pizza-image.jpg") #103d50 70% 30% !important;
+  background: #103d50 url("./pizza-image.jpg") 70% 40% !important;
 }
 
 .landing.segment{
-  min-height: 750px;
+  min-height: 950px;
 }
 
 .landing h1, h2 {
