@@ -42,6 +42,7 @@ class SignUp extends Component {
     const { fields } = this.state;
     // styles={{ backgroundImage: `url(${image})`}}
     return (
+      <div id="home">
       <div className="ui segment center landing masthead">
       {/* <div className="ui middle aligned center aligned grid"> */}
         <div className="ui text container">
@@ -78,6 +79,7 @@ class SignUp extends Component {
             </button>
           </div>
         </form>
+      </div>
       </div>
 
 
