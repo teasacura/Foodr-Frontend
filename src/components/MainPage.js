@@ -43,10 +43,11 @@ class MainPage extends Component {
       localStorage.setItem('token', user.jwt)
     }
     this.props.logIn(user)
+    // this.props.getLocation()
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       // <div id="home">
       <div id="home">

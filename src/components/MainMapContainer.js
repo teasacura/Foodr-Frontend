@@ -2,7 +2,7 @@ import React from 'react';
 import { apiKey } from '../key.js';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
-import { newLocation, postSearch, selectRestaurant } from "../actions";
+import { newLocation, postSearch, selectRestaurant, getLocation } from "../actions";
 import { debounce } from 'lodash'
 
 // let eventTimeout;
@@ -21,6 +21,10 @@ export class MainMapContainer extends React.Component {
       activeMarker: {},
       selectedPlace: {},
     };
+  }
+
+  componentDidMount() {
+    this.props.getLocation()
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -123,7 +127,7 @@ export class MainMapContainer extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     // const {latitude, longitude} = this.props.location
     const icon = {
       // https://loc8tor.co.uk/wp-content/uploads/2015/08/stencil.png
@@ -181,8 +185,8 @@ export class MainMapContainer extends React.Component {
             </div>
           </InfoWindow>
         </Map>
-      // )
-    // }
+      {/* ) */}
+    {/* } */}
       </div>
     );
   }
@@ -194,6 +198,6 @@ const mapStateToProps = state =>({
   loading: state.user.loading
 })
 
-export default connect(mapStateToProps, { newLocation, postSearch, selectRestaurant })(GoogleApiWrapper({
+export default connect(mapStateToProps, { newLocation, postSearch, selectRestaurant, getLocation })(GoogleApiWrapper({
   apiKey: apiKey
 })(MainMapContainer))
