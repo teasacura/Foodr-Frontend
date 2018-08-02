@@ -59,7 +59,7 @@ class LoginForm extends Component {
       <div className="ui segment center landing masthead">
       {/* <div className="ui middle aligned center aligned grid"> */}
         <div className="ui text container">
-          <h1 className="ui inverted header">Welcome to FoodR!</h1>
+          <h1 className="ui inverted header">Welcome to Foodr!</h1>
           <h2 className="ui inverted header">Finding food near you!</h2>
         </div>
         <form onSubmit={this.handleSubmit} className="ui large form">

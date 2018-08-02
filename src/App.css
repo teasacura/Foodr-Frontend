@@ -16,6 +16,18 @@
   text-align: center;
 }
 
+.landing h1 {
+  font-family: 'Righteous', cursive !important;
+}
+
+.ui.menu>.item:first-child {
+    font-family: 'Righteous', cursive !important;
+}
+
+/* #site-name .item {
+  font-family: 'Righteous', cursive !important;
+} */
+
 
 /* .ui[class*="center aligned"].segment {
     text-align: center;

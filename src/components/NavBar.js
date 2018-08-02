@@ -46,13 +46,11 @@ class NavBar extends Component {
               to="/profile"
               exact
               className="item"
-              id="site-name"
             >Profile</NavLink>
             <NavLink
               to="/"
               exact
               className="active item"
-              id="site-name"
             >Foodr Search</NavLink>
             <div className="right menu">
               {/* <div className="ui selection dropdown">
@@ -86,12 +84,17 @@ class NavBar extends Component {
           </div>
         ) : (
           <div className="ui menu">
+            <NavLink
+              to="/"
+              exact
+              className="item"
+              id="site-name"
+            >Foodr</NavLink>
             <div className="right menu">
               <NavLink
                 to="/"
                 exact
-                className="active item"
-                id="site-name"
+                className="item"
               >Log In</NavLink>
               {/* <a className="item">
                 Log In
