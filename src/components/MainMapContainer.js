@@ -147,7 +147,7 @@ export class MainMapContainer extends React.Component {
         ) : ( */}
           <Map google={this.props.google}
             style={mapStyle}
-            initialCenter={{
+            center={{
               lat: this.props.location.latitude,
               lng: this.props.location.longitude
             }}
