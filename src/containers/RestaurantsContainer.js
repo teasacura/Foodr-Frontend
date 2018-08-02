@@ -34,7 +34,7 @@ class RestaurantsContainer extends React.Component {
     // const button = document.querySelector("#dimmer-button")
     e.target.innerHTML = "Searching..."
     this.props.getLocation()
-    delay(this.deactivateDimmer, 2000)
+    delay(this.deactivateDimmer, 3000)
 
   }
 
@@ -42,15 +42,19 @@ class RestaurantsContainer extends React.Component {
     this.setState({active:false})
   }
 
+  handleClose = () => {
+    this.setState({ active: false })
+  }
+
   render() {
     const { active } = this.state
-    console.log(this.props.location)
-    console.log(this.props.loading)
+    // console.log(this.props.location)
+    // console.log(this.props.loading)
     // this.props.fetchInitialRestaurants(this.props.location)
     // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
-        <Dimmer active={active} page>
+        <Dimmer active={active} onClickOutside={this.handleClose} page>
           <Button id="dimmer-button" negative size="big" onClick={this.handleSearchClick}>Search Food Near Me!</Button>
         </Dimmer>
         <div className="six wide column mobile hidden">

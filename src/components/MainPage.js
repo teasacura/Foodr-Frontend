@@ -35,7 +35,7 @@ class MainPage extends Component {
   }
 
   handleLogin = (user) => {
-    console.log(user);
+    // console.log(user);
     const token = localStorage.getItem('token')
     if (!!token) {
       console.log("token present")
@@ -47,7 +47,7 @@ class MainPage extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       // <div id="home">
       <div id="home">

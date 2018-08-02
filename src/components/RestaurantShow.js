@@ -20,9 +20,9 @@ class RestaurantShow extends React.Component {
 
   }
 
-  componentDidUpdate() {
-
-  }
+  // componentDidUpdate() {
+  //
+  // }
     //
     // handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
 

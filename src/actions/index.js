@@ -2,7 +2,7 @@
 import { RestfulAdapter } from "../adapters";
 
 export function fetchInitialRestaurants(location) {
-  console.log("inside of fetch", location);
+  // console.log("inside of fetch", location);
   //using thunk, we return are returning a function here instead of
   //a plain object.  Thunk intercepts this returned value, and if it is a
   //function, cancels the normal event of calling our reducers, and
