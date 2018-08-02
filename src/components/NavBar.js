@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'semantic-ui-react'
 import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom'
 import { logOut, postSearch } from "../actions";
@@ -78,8 +79,9 @@ class NavBar extends Component {
               </select> */}
               <div className=" fluid item">
                 <div className="ui transparent icon input">
-                  <input id="search" type="search" placeholder="Search Nearby..." onChange={this.handleChange} name="term"></input>
+                  <input id="search" type="search" placeholder="Search Food Nearby..." onChange={this.handleChange} name="term"></input>
                   {/* onClick={this.handleSubmit} */}
+                  {/* <Button circular icon='search' onClick={this.handleSubmit}/> */}
                   <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
               </div>
