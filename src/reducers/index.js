@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null, loading: false, formData: {name: "", title: "", key_skill: ""} }, action) => {
   switch (action.type) {
     case "RESTAURANTS_LOADING":
-      // console.log(action);
       return {
         ...state,
         loading: true
@@ -15,7 +14,6 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
         loading: false
       };
     case "SELECT_RESTAURANT":
-      // console.log(action.payload);
       return {
         ...state,
         selectedRestaurant: action.payload
@@ -24,25 +22,6 @@ const restaurantsReducer = (state = { restaurants: [], selectedRestaurant: null,
       return {
         ...state,
         selectedRestaurant: null}
-
-
-    // case "UPDATE_FORM":
-    //   return {
-    //     ...state,
-    //     formData: {...state.formData, ...action.payload}
-    //   };
-    // case "SET_HOBBIT":
-    //
-    //   return {
-    //     ...state,
-    //     hobbits: state.hobbits.map(hobbit => {
-    //       if(hobbit.id === action.payload.id) {
-    //         return action.payload
-    //       } else {
-    //         return hobbit
-    //       }
-    //     })
-    //   }
     default:
       return state;
   }
@@ -84,7 +63,6 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading: false, 
         loading: true
       }
     case "GET_LOCATION": {
-      // console.log(action.payload);
           return {
               ...state,
               location: {
@@ -127,18 +105,5 @@ const rootReducer = combineReducers({
   user: userReducer,
   restaurants: restaurantsReducer
 });
-
-// NOTE:
-// the keys in the object passed to combineReducers
-// will become the top level keys of redux store state
-// i.e. store.getState() would return =>
-// {
-//   paintings: {
-//     /* state returned ftom paintingsReducer */
-//   },
-//   activePainting: {
-//     /* state returned from activePaintingReducer */
-//   }
-// }
 
 export default rootReducer;
