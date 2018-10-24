@@ -20,39 +20,12 @@ class RestaurantShow extends React.Component {
 
   }
 
-  // componentDidUpdate() {
-  //
-  // }
-    //
-    // handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating })
-
-    // handleClick = () => {
-    //   this.setState({ active: !this.state.active}, )
-    // }
-
     render(){
-      console.log(this.props);
-      // if (this.props.selectedRestaurant === undefined) {
-      //   return (
-      //     <div>
-      //       <p>Loading...</p>
-      //     </div>
-      //   )
-      // } else {
     const { id, image_url, name, address, phone, categories, url, is_closed, reviews, rating, price, do_delivery, latitude, longitude } = this.props.selectedRestaurant
     return (
-      // <div className="ui two column centered grid" style={style}>
-
         <div className="ui container segment center aligned" style={style}>
           <div className="column">
             <Button floated="right" circular icon="close" onClick={() => this.props.clearRestaurant()}/>
-            {/* <Button floated="right" inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button> */}
-          {/* </div> */}
-          {/* <div className="column"> */}
-
-          {/* here need to fix the button and make event to close "view restaurant" */}
-          {/* </div> */}
-          {/* <div className="column"> */}
             <div className="ui small centered image">
               <img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
             </div>
@@ -60,7 +33,6 @@ class RestaurantShow extends React.Component {
             <div>
               <Rating defaultRating={rating} maxRating={5} />
               <p>Price: {price}</p>
-              {/* <pre>{JSON.stringify(this.state, null, 2)} onRate={this.handleRate}</pre> */}
             </div>
           </div>
           <h3><a
@@ -84,16 +56,8 @@ class RestaurantShow extends React.Component {
           </div>
        </div>
     );
-  // }
   }
 }
-
-// const mapStateToProps = state => ({
-//   selectedRestaurant: state.restaurants.selectedRestaurant,
-//   latitude: state.user.location.latitude,
-//   longitude: state.user.location.longitude
-//   // state.restaurants.find(r => r.id === state.selectedRestaurant)
-// });
 
 
 export default connect(null, { clearRestaurant })(RestaurantShow);
