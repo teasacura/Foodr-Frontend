@@ -1,9 +1,3 @@
-/* body {
-  background-image: url("./pizza-image.jpg") !important;
-  background-position: center !important;
-  background-size: contain !important;
-} */
-
 .landing {
   background: #103d50 url("./pizza-image.jpg") 70% 40% !important;
 }
@@ -24,15 +18,6 @@
     font-family: 'Righteous', cursive !important;
 }
 
-/* #site-name .item {
-  font-family: 'Righteous', cursive !important;
-} */
-
-
-/* .ui[class*="center aligned"].segment {
-    text-align: center;
-} */
-
 .masthead h1.ui.header {
     margin-top: 2.5em;
     margin-bottom: 0em;
@@ -49,19 +34,6 @@
 .ui.header {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
-
-/* #home form button, #topic > div button, #score-card div button, #profile div button, #signup form button {
-  background: #4d94ff;
-  color: white;
-  border: none;
-  padding: .3rem .7rem;
-  margin: .5rem auto;
-  display: block;
-  transition: background 150ms; }
-  #home form button:hover, #topic > div button:hover, #score-card div button:hover, #profile div button:hover, #signup form button:hover {
-    background: #1D88E3; }
-  #home form button:active, #topic > div button:active, #score-card div button:active, #profile div button:active, #signup form button:active {
-    background: #6EB0E8; } */
 
 #home form a {
   width: 100%;
