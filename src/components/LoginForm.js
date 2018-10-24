@@ -13,10 +13,6 @@ class LoginForm extends Component {
     }
   };
 
-  // componentDidMount(){
-  //   this.props.getLocation()
-  // }
-
   handleChange = (e) => {
     const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
     this.setState({ fields: newFields });
@@ -39,26 +35,8 @@ class LoginForm extends Component {
   }
 
 
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state.fields)
-    // }
-    // fetch('http://localhost:3000/api/v1/login', options)
-    // .then(resp => resp.json())
-    // .then(user => {
-    //     this.props.handleLogin(user)
-    // })
-
-  // };
-
   render() {
-    // console.log(this.state);
     const { fields } = this.state;
-    // styles={{ backgroundImage: `url(${image})`}}
     return (
       <div className="ui segment center landing masthead">
       {/* <div className="ui middle aligned center aligned grid"> */}
