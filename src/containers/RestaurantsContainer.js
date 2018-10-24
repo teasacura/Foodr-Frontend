@@ -15,10 +15,6 @@ class RestaurantsContainer extends React.Component {
   state ={
     active: true
   }
-  // componentDidMount() {
-  //   this.props.getLocation()
-  //   this.props.fetchInitialRestaurants(this.props.location)
-  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -31,7 +27,6 @@ class RestaurantsContainer extends React.Component {
   }
 
   handleSearchClick = (e) => {
-    // const button = document.querySelector("#dimmer-button")
     e.target.innerHTML = "Searching..."
     this.props.getLocation()
     delay(this.deactivateDimmer, 3000)
@@ -48,10 +43,6 @@ class RestaurantsContainer extends React.Component {
 
   render() {
     const { active } = this.state
-    // console.log(this.props.location)
-    // console.log(this.props.loading)
-    // this.props.fetchInitialRestaurants(this.props.location)
-    // console.log(this.props.restaurants.selectedRestaurant);
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handleClose} page>
@@ -88,7 +79,6 @@ const mapStateToProps = state => ({
   selectedRestaurant: state.restaurants.selectedRestaurant,
   location: state.user.location,
   loading: state.user.loading
-  // state.restaurants.find(r => r.id === state.selectedRestaurant)
 });
 
 export default connect(mapStateToProps, { fetchInitialRestaurants, postFavoriteRestaurant, getLocation })(RestaurantsContainer);
