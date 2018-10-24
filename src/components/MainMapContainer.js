@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 import { newLocation, postSearch, selectRestaurant, getLocation } from "../actions";
 import { debounce } from 'lodash'
 
-// let eventTimeout;
-
-
 const mapStyle = {
   width: '95%',
   height: '100%'
@@ -22,10 +19,6 @@ export class MainMapContainer extends React.Component {
       selectedPlace: {},
     };
   }
-
-  // componentDidMount() {
-  //   this.props.getLocation()
-  // }
 
   shouldComponentUpdate(nextProps, nextState) {
       if (this.state.activeMarker === nextState.activeMarker && this.props === nextProps) {
@@ -47,37 +40,6 @@ export class MainMapContainer extends React.Component {
      this.props.postSearch("Food", newLatitude, newLongitude)
     }
 
-    // There is a google maps bug of moving cursor several times over and out
-
-  // showPopUpOfMarker = (props, marker, e) => {
-  //     console.log(e);
-  //     clearTimeout(eventTimeout);
-  //     eventTimeout = setTimeout(function(){
-  //             console.log("Mouse over");
-  //             this.setState({
-  //               selectedPlace: props,
-  //               activeMarker: marker,
-  //               showingInfoWindow: true
-  //             });
-  //     }.bind(this),
-  //     500);
-  //   }
-
-  // hidePopUpOfMarker = (e) => {
-  //   // console.log("out");
-  //         console.log("Mouse out")
-  //         this.setState({showingInfoWindow:false})
-  //        // If we already left marker, clear the timeout
-  //        clearTimeout(eventTimeout);
-  //      }
-
- // onMarkerClick = (props, marker, e) =>
- //   this.setState({
- //     selectedPlace: props,
- //     activeMarker: marker,
- //     showingInfoWindow: true
- //   });
-
   onMouseOverMarker = (props, marker, e) => {
       this.setState({
         selectedPlace: props,
@@ -87,8 +49,6 @@ export class MainMapContainer extends React.Component {
   }
 
   handleMouseEnter = (props, marker, e) => {
-    // console.log(marker);
-    // console.log('state marker', this.state.activeMarker);
       if (this.state.activeMarker.name !== marker.name) {
         this.setState({
             selectedPlace: props,
@@ -96,16 +56,6 @@ export class MainMapContainer extends React.Component {
             showingInfoWindow: true
           })
       }
-      // if (marker === this.state.activeMarker) {
-      //   console.log("same");
-      // } else {
-      //   console.log("hello");
-      //   this.setState({
-      //     selectedPlace: props,
-      //     activeMarker: marker,
-      //     showingInfoWindow: true
-      //   })
-      // }
     }
 
   handleMouseLeave = (e) => {
@@ -127,19 +77,14 @@ export class MainMapContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    // const {latitude, longitude} = this.props.location
     const icon = {
-      // https://loc8tor.co.uk/wp-content/uploads/2015/08/stencil.png
             url: "http://www.portlandchronicle.com/wp-content/uploads/leaflet-maps-marker-icons/map-pin-blue-th.png", // url
             scaledSize: new this.props.google.maps.Size(25, 40), // scaled size
         };
-    // const iw = this.infowindow = new google.maps.InfoWindow({ content: `<div id="iwc"><h1></h1><div/>` });
 
     return (
       <div>
         {this.props.location.latitude === undefined ? (
-          // <div>Loading...</div>
           <div className="ui segment">
             <div className="ui active inverted dimmer">
               <div className="ui mini text loader">Loading</div>
