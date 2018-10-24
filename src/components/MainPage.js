@@ -3,13 +3,6 @@ import LoginForm from './LoginForm'
 import { connect } from "react-redux";
 import { logIn, logOut, getLocation} from "../actions";
 import RestaurantsContainer from "../containers/RestaurantsContainer"
-// import { Link, Redirect } from 'react-router-dom'
-
-// const homeStyle = {
-//   backgroundImage: `url("./pizza-image.jpg") !important`,
-//   backgroundPosition: `center !important`,
-//   backgroundSize: `contain !important`
-// }
 
 
 class MainPage extends Component {
@@ -35,7 +28,6 @@ class MainPage extends Component {
   }
 
   handleLogin = (user) => {
-    // console.log(user);
     const token = localStorage.getItem('token')
     if (!!token) {
       console.log("token present")
@@ -43,13 +35,10 @@ class MainPage extends Component {
       localStorage.setItem('token', user.jwt)
     }
     this.props.logIn(user)
-    // this.props.getLocation()
   }
 
   render() {
-    // console.log(this.props);
     return (
-      // <div id="home">
       <div id="home">
         { this.props.loggedIn ? (
           <div>
